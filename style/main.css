@@ -1,0 +1,81 @@
+body {
+	margin: 0;
+	font-family: Arial, Helvetica, sans-serif;
+}
+
+/* Add a black background color to the top navigation */
+.topnav {
+  background-color: #333;
+  overflow: hidden;
+}
+
+/* Style the links inside the navigation bar */
+.topnav a {
+  float: left;
+  color: #f2f2f2;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+  font-size: 17px;
+}
+
+/* Change the color of links on hover */
+.topnav a:hover {
+  background-color: #ddd;
+  color: black;
+}
+
+/* Add a color to the active/current link */
+.topnav a.active {
+  background-color: brown;
+  color: white;
+}
+
+.top {
+	background-image: linear-gradient( brown 80%, white);
+	text-align: center;
+	padding-bottom: 13px;
+	margin-bottom: 13px;
+}
+
+.top img {
+	width: 150px;
+	height: auto;
+}
+
+#web {
+	margin-top: 30px;
+}
+
+#lista {
+	outline-style: inset;
+	outline-color: rgba(1, 1, 1, 0.5);
+	border-radius: 10px;
+	box-shadow: 0px 0px 8px 8px lightgray;
+	width: 200px;
+	padding: 1px 13px;
+	padding-bottom: 10px;
+	text-align: center;
+	margin-left: 20px;
+	margin-right: 20px;
+	float: left;
+}
+
+#lista h2 {
+	color: rgb(162,0,17);
+}
+
+#lista a {
+	font-family: Arial, Helvetica, sans-serif;
+	color: rgb(187,0,17);
+	float: left;
+}
+
+#content #info {
+	text-align: center;
+	color: rgb(102,0,0);
+}
+
+#content #info strong{
+	font-size: 35px;
+}

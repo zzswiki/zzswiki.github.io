@@ -1,0 +1,51 @@
+body {
+	font-family: Arial, Helvetica, sans-serif;
+}
+
+h1 {
+	color: rgb(187,0,17);
+}
+
+#img {
+	width: min-content;
+	height: min-content;
+	border-style: solid;
+	border-color: black;
+	border-width: 1px;
+	background-color: lightgrey;
+	box-shadow: 0px 0px 8px 8px lightgray;
+	margin: 8px;
+}
+
+#img img {
+	outline-style: solid;
+	outline-width: 1px;
+}
+
+#img p {
+	text-align: center;
+	margin: 3px;
+	font-size: small;
+}
+
+a {
+	color: rgb(187,0,17);
+}
+
+hr {
+	margin-left: 50px;
+	margin-right: 50px;
+	margin-top: 20px;
+	margin-bottom: 20px;
+}
+
+blockquote {
+	outline-style: dashed;
+	outline-width: 1px;
+	outline-color: rgb(154,154,154);
+	background-color: rgb(244,244,244);
+	width: fit-content;
+	height: min-content;
+	padding: 1px 10px;
+	width: 600px;
+}

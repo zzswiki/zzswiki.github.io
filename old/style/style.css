@@ -1,0 +1,80 @@
+body{
+    background-color: #dddddd;
+    font-family: Tahoma;
+    letter-spacing: 0px;
+    word-spacing: 0px;
+}
+#panel{
+    padding-left: 50%;
+    font-size: 20px;
+    letter-spacing: 0px;
+    word-spacing: 0px;
+    color: #000000;
+    font-weight: 700;
+    text-decoration: none solid rgb(68, 68, 68);
+    font-style: italic;
+    font-variant: normal;
+    text-transform: none;
+    text-align: center;
+
+    width: 15em;
+    border: 1px solid #333;
+    box-shadow: 8px 8px 5px #444;
+    padding: 8px 12px;
+    background-image: linear-gradient(180deg, #fff, #ddd 40%, #ccc);
+}
+#top{
+    background-color: #663399;
+    margin-left: -8px;
+    margin-right: -8px;
+    margin-top: -8px;
+    position: fixed;
+    width: 100%;
+    height: 70px;
+}
+#obiekty{
+    border: 4px outset rgb(107, 107, 255);
+    background-image: linear-gradient(180deg, #fff, #ddd 40%, #ccc);
+    position: fixed;
+    width: 150px;
+    text-align: center;
+    margin-left: -8px;
+    font-size: 20px;
+    
+    top: 69px;
+}
+#logi{
+    border: 4px outset sandybrown;
+    background-image: linear-gradient(180deg, #fff, #ddd 40%, #ccc);
+    font-family: 'Courier New', monospace;
+    text-align: center;
+    position: fixed;
+    width: 150px;
+
+    top: 69px;
+    left: 158px;
+}
+#opowiadanie{
+    border: 4px outset paleturquoise;
+    background-image: linear-gradient(180deg, #fff, #ddd 40%, #ccc);
+    text-align: center;
+    position: fixed;
+    width: 150px;
+
+    top: 69px;
+    left: 316px;
+}
+#inneOpis{
+    border: 4px outset rgb(107, 107, 255);
+    background-image: linear-gradient(180deg, #fff, #ddd 40%, #ccc);
+    position: fixed;
+    text-align: center;
+    margin-left: -8px;
+    font-size: 20px;
+    
+    top: 69px;
+}
+
+.link{
+    color: black;
+}
