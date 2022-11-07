@@ -76,13 +76,13 @@ body {
 	width: fit-content;
 }
 
-#content #info {
+#info {
 	text-align: center;
 	color: rgb(102,0,0);
 	margin-left: 200px;
 }
 
-#content #info strong{
+#info strong{
 	font-size: 35px;
 }
 
@@ -95,4 +95,5 @@ body {
 	width: 500px;
 	height: 200px;
 	border-radius: 25px;
+	padding: 5px;
 }
