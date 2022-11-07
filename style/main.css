@@ -71,11 +71,28 @@ body {
 	float: left;
 }
 
+#content {
+	float: left;
+	width: fit-content;
+}
+
 #content #info {
 	text-align: center;
 	color: rgb(102,0,0);
+	margin-left: 200px;
 }
 
 #content #info strong{
 	font-size: 35px;
+}
+
+.news {
+	margin: 20px;
+}
+
+.klasy {
+	background-color: rgb(202, 202, 202);
+	width: 500px;
+	height: 200px;
+	border-radius: 25px;
 }

@@ -1,0 +1,13 @@
+.class_desc {
+	border-radius: 25px;
+	border: 2px solid black;
+	height: 260px;
+	margin: 20px;
+}
+
+.icon {
+	width: 270px;
+	height: auto;
+	float: left;
+	margin-right: 10px;
+}
