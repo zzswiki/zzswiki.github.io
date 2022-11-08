@@ -73,13 +73,14 @@ body {
 
 #content {
 	float: left;
-	width: fit-content;
 }
 
 #info {
 	text-align: center;
 	color: rgb(102,0,0);
-	margin-left: 200px;
+	margin-right: 20px;
+	padding: 20px;
+	float: right;
 }
 
 #info strong{
@@ -88,12 +89,15 @@ body {
 
 .news {
 	margin: 20px;
+	width: 45%;
+	/* background-color: aqua; */
 }
 
 .klasy {
-	background-color: rgb(202, 202, 202);
+	background-color: rgb(219, 219, 219);
 	width: 500px;
 	height: 200px;
 	border-radius: 25px;
+	border: 2px solid black;
 	padding: 5px;
 }
