@@ -1,8 +1,9 @@
 .class_desc {
 	border-radius: 25px;
 	border: 2px solid black;
-	height: 260px;
+	min-height: 270px;
 	margin: 20px;
+	padding: 10px;
 }
 
 .icon {

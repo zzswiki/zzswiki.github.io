@@ -93,9 +93,10 @@ body {
 
 .klasy {
 	background-color: rgb(219, 219, 219);
-	width: 500px;
+	min-width: 500px;
 	height: 200px;
 	border-radius: 25px;
 	border: 2px solid black;
 	padding: 5px;
+	box-shadow: 0px 0px 5px 5px lightgray;
 }

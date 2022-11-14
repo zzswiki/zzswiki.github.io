@@ -51,7 +51,8 @@ blockquote {
 	width: fit-content;
 	height: min-content;
 	padding: 1px 10px;
-	width: 600px;
+	max-width: 600px;
+	/* width: 600px; */
 }
 
 .section {
