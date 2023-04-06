@@ -56,8 +56,8 @@ body {
 	padding: 1px 13px;
 	padding-bottom: 10px;
 	text-align: center;
+	margin: 12px;
 	margin-left: 20px;
-	margin-right: 20px;
 	float: left;
 }
 
@@ -73,6 +73,7 @@ body {
 
 #content {
 	float: left;
+	margin-top: 12px;
 }
 
 #info {
@@ -87,16 +88,22 @@ body {
 
 .news {
 	margin: 20px;
+	margin-top: 0px;
 	width: 45%;
-	/* background-color: aqua; */
 }
 
 .klasy {
 	background-color: rgb(219, 219, 219);
-	min-width: 500px;
-	height: 200px;
 	border-radius: 25px;
 	border: 2px solid black;
 	padding: 5px;
 	box-shadow: 0px 0px 5px 5px lightgray;
+	text-align: center;
+	width: fit-content;
+	min-width: 40vh;
+}
+
+.klasy img {
+	max-width: 25vh;
+	height: auto;
 }
