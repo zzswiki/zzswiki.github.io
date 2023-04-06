@@ -4,6 +4,17 @@ body {
 	text-align: center;
 }
 
-a {
+.link {
 	color: rgb(187,0,17);
+}
+
+img {
+	width: 45vh;
+	height: auto;
+	margin-top: 10px;
+}
+
+.info {
+	font-size: 120px;
+	font-weight: bold;
 }
