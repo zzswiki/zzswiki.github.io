@@ -4,7 +4,9 @@
 		<meta charset="UTF-8">
 		<meta http-equiv="X-UA-Compatible" content="IE=edge">
 		<meta name="viewport" content="width=device-width, initial-scale=1.0">
-		<link rel="stylesheet" type="text/css" href="style/main.css">
+		<link id="theme" rel="stylesheet" type="text/css" href="/style/dark/main-dark.css">
+		<link href='https://unpkg.com/css.gg@2.0.0/icons/css/sun.css' rel='stylesheet'>
+		<link href='https://unpkg.com/css.gg@2.0.0/icons/css/moon.css' rel='stylesheet'>
 		<link rel="icon" href="/media/zzs.png">
 		<title>ZZS-Wiki</title>
 	</head>
@@ -15,6 +17,10 @@
 			</div>
 		</div>
 		<div class="top">
+			<a class="active" id="toggle-btn">
+				<i class="gg-sun"></i>
+				<i class="gg-moon"></i>
+			</a>
 			<img src="/media/zzs.png">
 			<h1 style="margin-top: -10px; font-size: 50px;">Wiki</h1>
 		</div>
@@ -61,5 +67,6 @@
 			<a href="https://github.com/zzswiki" style="color: rgb(187,0,17); margin-left: 2vh;" target="_blank">GitHub</a>
 			<a style="float: right;">Main creator: PieselKlif</a>
 		</footer>
+		<script src="/js/theme/dark-theme-main.js"></script>
 	</body>
 </html>
