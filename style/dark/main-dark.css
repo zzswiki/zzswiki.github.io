@@ -18,6 +18,7 @@ body {
 	color: white;
 	padding: 7px;
 	margin: 5px;
+	margin-right: 20px;
 	border-radius: 5px;
 	position: absolute;
 	right: 0;
@@ -72,7 +73,6 @@ body {
 }
 
 #lista {
-	/* outline-style: inset; */
 	outline-color: rgba(1, 1, 1, 0.5);
 	border-radius: 10px;
 	box-shadow: 0px 0px 8px 8px rgb(26, 25, 25);
@@ -103,7 +103,7 @@ body {
 
 #info {
 	text-align: center;
-	color: rgb(190, 33, 33);
+	color: rgb(206, 43, 43);
 	padding: 20px;
 }
 
@@ -118,7 +118,7 @@ body {
 }
 
 .klasy {
-	background-color: rgb(145, 145, 145);
+	background-color: rgb(105, 105, 105);
 	border-radius: 25px;
 	border: 2px solid black;
 	padding: 5px;
@@ -126,6 +126,7 @@ body {
 	text-align: center;
 	width: fit-content;
 	min-width: 40vh;
+	color: white;
 }
 
 .klasy img {
