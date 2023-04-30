@@ -1,0 +1,34 @@
+.kreator {
+	background-color: #D9D9D9;
+	margin: 20px;
+	width: 30%;
+	box-shadow: 7px 7px 25px -4px rgba(66, 68, 90, 1);
+	border-radius: 10px;
+	padding-bottom: 20px;
+}
+
+.kreator .left {
+	width: 50%;
+	text-align: center;
+	float: left;
+}
+
+.kreator .right {
+	width: 50%;
+	float: left;
+}
+
+.kreator .right a {
+	background-color: azure;
+	height: 50px;
+}
+
+.kreator .right a img {
+	width: 50px;
+	height: auto;
+	margin-bottom: 10px;
+}
+
+.dodaj-sekcje {
+	margin-left: 15px;
+}
