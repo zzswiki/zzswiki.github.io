@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pl">
 <head>
 	<meta charset="UTF-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -15,23 +15,36 @@
 			<a href="/">Home</a>
 		</div>
 	</div>
-	<div class="kreator">
-		<h1 style="text-align: center;">Kreator</h1>
-		<div class="left">
-			<p>ID</p>
-			<input type="text">
+	<div class="panels">
+		<div class="kreator">
+			<h1 style="text-align: center;">Kreator</h1>
+			<div class="left">
+				<p>ID</p>
+				<input type="number" maxlength="3" id="id-input" class="id-input">
+			</div>
+			<div class="right">
+				<p>Klasy</p>
+				<a><img src="/media/class/safe.png"></a>
+				<a><img src="/media/class/euclid.png"></a>
+				<a><img src="/media/class/keter.png"></a>
+				<br>
+				<a><img src="/media/class/setter.png"></a>
+				<a><img src="/media/class/metter.png"></a>
+				<a><img src="/media/class/etther.png"></a>
+			</div>
+			<button class="dodaj-sekcje">Dodaj sekcję</button>
 		</div>
-		<div class="right">
-			<p>Klasy</p>
-			<a><img src="/media/class/safe.png"></a>
-			<a><img src="/media/class/euclid.png"></a>
-			<a><img src="/media/class/keter.png"></a>
-			<br>
-			<a><img src="/media/class/setter.png"></a>
-			<a><img src="/media/class/metter.png"></a>
-			<a><img src="/media/class/etther.png"></a>
+		<div class="docs">
+			<h1 style="text-align: center;">Docs</h1>
+			<p style="margin: 20px;">
+
+				</p>
 		</div>
-		<button class="dodaj-sekcje">Dodaj sekcję</button>
+		<div class="output-html">
+			<h1 style="text-align: center;">Output</h1>
+		</div>
 	</div>
+
+	<script src="/js/kreator.js"></script>
 </body>
 </html>

@@ -1,11 +1,27 @@
-.kreator {
-	background-color: #D9D9D9;
-	margin: 20px;
-	width: 30%;
-	box-shadow: 7px 7px 25px -4px rgba(66, 68, 90, 1);
-	border-radius: 10px;
-	padding-bottom: 20px;
+.panels {
+  display: flex;
+  justify-content: space-between;
 }
+
+.kreator, .docs, .output-html {
+  background-color: #D9D9D9;
+  margin: 20px;
+  box-shadow: 7px 7px 25px -4px rgba(66, 68, 90, 1);
+  border-radius: 10px;
+  height: auto;
+	padding-bottom: 15px;
+}
+
+.kreator, .docs {
+  width: 30%;
+}
+
+.output-html {
+  width: 40%;
+}
+
+
+/* kreator */
 
 .kreator .left {
 	width: 50%;
@@ -13,14 +29,21 @@
 	float: left;
 }
 
+.kreator .left .id-input {
+	width: 40px;
+}
+
 .kreator .right {
 	width: 50%;
 	float: left;
+	text-align: center;
 }
 
 .kreator .right a {
 	background-color: azure;
 	height: 50px;
+	width: 50px;
+	display: inline-block;
 }
 
 .kreator .right a img {
@@ -32,3 +55,8 @@
 .dodaj-sekcje {
 	margin-left: 15px;
 }
+
+/* docs */
+
+
+/* output */
