@@ -118,6 +118,7 @@
 	padding: 5px 10px;
 	border-radius: 20px;
 	cursor: pointer;
+	border: none;
 }
 
 .zawartosc {
@@ -133,6 +134,10 @@
   border: 2px solid #ccc;
   border-radius: 4px;
   resize: vertical;
+}
+
+textarea {
+	resize: vertical;
 }
 
 /* docs */

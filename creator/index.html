@@ -49,13 +49,13 @@
 				<a class="deactivate"><img src="/media/class/etther.png"></a>
 			</div>
 			<div class="content">
-				<div class="sekcja">
-					<a class="close">X</a>
+				<div class="sekcja" id="sekcja_1">
+					<button onclick="close_sekcja(1)" class="close">X</button>
 					<h3>Sekcja 1</h3>
 					<p>Tekst</p>
 					<button>Dodaj tekst</button>
-					<div class="zawartosc">
-						<a style="float: right; cursor: pointer;">X</a>
+					<div class="zawartosc" id="zawartosc_1_1">
+						<button onclick="close_zawartosc(1, 1)" style="float: right; background-color: rgba(0, 0, 0, 0); border: none; cursor: pointer;">X</button>
 						<label>Nazwa</label>
 						<input class="nazwa" type="text">
 						<a>Zawartość</a>
@@ -64,7 +64,7 @@
 					</div>
 				</div>
 				<div class="sekcja">
-					<a class="close">X</a>
+					<button class="close">X</button>
 					<h3>Sekcja 2</h3>
 					<p>Przeszłuchanie</p>
 					<label>Przesłuchujący</label>
@@ -74,7 +74,7 @@
 					<br>
 					<button>Dodaj tekst</button>
 					<div class="zawartosc">
-						<a style="float: right; cursor: pointer;">X</a>
+						<button style="float: right; background-color: rgba(0, 0, 0, 0); border: none; cursor: pointer;">X</button>
 						<label>Nazwa</label>
 						<input class="nazwa" type="text">
 						<a>Zawartość</a>
@@ -83,7 +83,7 @@
 					</div>
 				</div>
 				<div class="sekcja">
-					<a class="close">X</a>
+					<button class="close">X</button>
 					<h3>Sekcja 3</h3>
 					<p>SFA</p>
 					<label>Osoba notująca</label>
@@ -91,7 +91,7 @@
 					<br>
 					<button>Dodaj tekst</button>
 					<div class="zawartosc">
-						<a style="float: right; cursor: pointer;">X</a>
+						<button style="float: right; background-color: rgba(0, 0, 0, 0); border: none; cursor: pointer;">X</button>
 						<label>Nazwa</label>
 						<input class="nazwa" type="text">
 						<a>Zawartość</a>
@@ -100,7 +100,7 @@
 					</div>
 				</div>
 				<div class="sekcja">
-					<a class="close">X</a>
+					<button class="close">X</button>
 					<h3>Sekcja 4</h3>
 					<p>Badanie</p>
 					<label>Przeprowadzający badanie</label>
@@ -111,7 +111,7 @@
 					<br>
 					<button>Dodaj tekst</button>
 					<div class="zawartosc">
-						<a style="float: right; cursor: pointer;">X</a>
+						<button style="float: right; background-color: rgba(0, 0, 0, 0); border: none; cursor: pointer;">X</button>
 						<label>Nazwa</label>
 						<input class="nazwa" type="text">
 						<a>Zawartość</a>
@@ -137,6 +137,7 @@
 		</div>
 		<div class="output-html">
 			<h1 style="text-align: center;">Output</h1>
+			<textarea style="margin: 20px; width: 90%; min-height: 40vh;"></textarea>
 		</div>
 	</div>
 
