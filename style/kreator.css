@@ -40,10 +40,17 @@
 }
 
 .kreator .right a {
-	background-color: azure;
 	height: 50px;
 	width: 50px;
 	display: inline-block;
+}
+
+.kreator .right .active{
+	background-color: rgb(32, 156, 156);
+}
+
+.kreator .right .deactivate {
+	background-color: azure;
 }
 
 .kreator .right a img {
@@ -53,7 +60,15 @@
 }
 
 .dodaj-sekcje {
-	margin-left: 15px;
+	margin-top: 20px;
+}
+
+.img-button-off {
+	background-color: rgb(199, 47, 47);
+}
+
+.img-button-on {
+	background-color: #71DE68;
 }
 
 /* docs */

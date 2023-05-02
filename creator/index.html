@@ -21,18 +21,35 @@
 			<div class="left">
 				<p>ID</p>
 				<input type="number" maxlength="3" id="id-input" class="id-input">
+				<br><br>
+				<p>Zdjęcie obiektu</p>
+				<input type="button" value="OFF" class="img-button-off">
+				<div style="display: none;">
+					<p>Opis zdjęcia</p>
+					<input type="text">
+				</div>
+				<br>
+				<button class="dodaj-sekcje">Dodaj sekcję</button>
 			</div>
 			<div class="right">
 				<p>Klasy</p>
-				<a><img src="/media/class/safe.png"></a>
-				<a><img src="/media/class/euclid.png"></a>
-				<a><img src="/media/class/keter.png"></a>
+				<a class="deactivate"><img src="/media/class/safe.png"></a>
+				<a class="deactivate"><img src="/media/class/euclid.png"></a>
+				<a class="deactivate"><img src="/media/class/keter.png"></a>
 				<br>
-				<a><img src="/media/class/setter.png"></a>
-				<a><img src="/media/class/metter.png"></a>
-				<a><img src="/media/class/etther.png"></a>
+				<a class="deactivate"><img src="/media/class/setter.png"></a>
+				<a class="deactivate"><img src="/media/class/metter.png"></a>
+				<a class="deactivate"><img src="/media/class/etther.png"></a>
 			</div>
-			<button class="dodaj-sekcje">Dodaj sekcję</button>
+			<div class="content">
+
+			</div>
+			<br>
+			<p>Autor (nick)</p>
+			<input type="text">
+			<p>Autor (wyświetlana)</p>
+			<input type="text">
+			<button>Generuj</button>
 		</div>
 		<div class="docs">
 			<h1 style="text-align: center;">Docs</h1>
