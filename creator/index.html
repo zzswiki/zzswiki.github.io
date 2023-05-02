@@ -23,12 +23,19 @@
 				<input type="number" maxlength="3" id="id-input" class="id-input">
 				<br><br>
 				<p>Zdjęcie obiektu</p>
-				<input type="button" value="OFF" class="img-button-off">
-				<div style="display: none;">
+				<input type="button" value="ON" class="img-button-on">
+				<div style="display: block;">
 					<p>Opis zdjęcia</p>
 					<input type="text">
 				</div>
 				<br>
+				<label for="typ-sekcji">Typ sekcji:</label>
+				<select name="typ-sekcji" id="typ-sekcji">
+					<option value="tekst">Tekst</option>
+					<option value="sfa">SFA</option>
+					<option value="przesluchanie">Przesłuchanie</option>
+					<option value="badanie">Badanie</option>
+				</select>
 				<button class="dodaj-sekcje">Dodaj sekcję</button>
 			</div>
 			<div class="right">
@@ -42,14 +49,85 @@
 				<a class="deactivate"><img src="/media/class/etther.png"></a>
 			</div>
 			<div class="content">
-
+				<div class="sekcja">
+					<a class="close">X</a>
+					<h3>Sekcja 1</h3>
+					<p>Tekst</p>
+					<button>Dodaj tekst</button>
+					<div class="zawartosc">
+						<a style="float: right; cursor: pointer;">X</a>
+						<label>Nazwa</label>
+						<input class="nazwa" type="text">
+						<a>Zawartość</a>
+						<br>
+						<textarea class="zawartosc-text"></textarea>
+					</div>
+				</div>
+				<div class="sekcja">
+					<a class="close">X</a>
+					<h3>Sekcja 2</h3>
+					<p>Przeszłuchanie</p>
+					<label>Przesłuchujący</label>
+					<input type="text">
+					<label>Przesłuchiwany</label>
+					<input type="text">
+					<br>
+					<button>Dodaj tekst</button>
+					<div class="zawartosc">
+						<a style="float: right; cursor: pointer;">X</a>
+						<label>Nazwa</label>
+						<input class="nazwa" type="text">
+						<a>Zawartość</a>
+						<br>
+						<textarea class="zawartosc-text"></textarea>
+					</div>
+				</div>
+				<div class="sekcja">
+					<a class="close">X</a>
+					<h3>Sekcja 3</h3>
+					<p>SFA</p>
+					<label>Osoba notująca</label>
+					<input type="text">
+					<br>
+					<button>Dodaj tekst</button>
+					<div class="zawartosc">
+						<a style="float: right; cursor: pointer;">X</a>
+						<label>Nazwa</label>
+						<input class="nazwa" type="text">
+						<a>Zawartość</a>
+						<br>
+						<textarea class="zawartosc-text"></textarea>
+					</div>
+				</div>
+				<div class="sekcja">
+					<a class="close">X</a>
+					<h3>Sekcja 4</h3>
+					<p>Badanie</p>
+					<label>Przeprowadzający badanie</label>
+					<input type="text">
+					<br>
+					<label>Przedmioty w badaniu</label>
+					<input type="text">
+					<br>
+					<button>Dodaj tekst</button>
+					<div class="zawartosc">
+						<a style="float: right; cursor: pointer;">X</a>
+						<label>Nazwa</label>
+						<input class="nazwa" type="text">
+						<a>Zawartość</a>
+						<br>
+						<textarea class="zawartosc-text"></textarea>
+					</div>
+				</div>
 			</div>
 			<br>
-			<p>Autor (nick)</p>
-			<input type="text">
-			<p>Autor (wyświetlana)</p>
-			<input type="text">
-			<button>Generuj</button>
+			<div style="display: inline-block; width: 100%; text-align: center;">
+				<p>Autor (nick)</p>
+				<input type="text">
+				<p style="margin-top: 30px;">Autor (wyświetlana)</p>
+				<input type="text">
+			</div>
+			<button class="generuj-btn">Generuj</button>
 		</div>
 		<div class="docs">
 			<h1 style="text-align: center;">Docs</h1>
