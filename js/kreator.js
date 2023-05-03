@@ -1,10 +1,15 @@
 // zmienne
 var id_nastepnej_sekcji = 1;
 var id_nastepnej_zawartosci = 1;
-var lista_sekcji = [];
-var lista_zawartosci = [];
 
 var zdjecie_obiektu = false;
+
+var is_safe = false;
+var is_euclid = false;
+var is_keter = false;
+var is_setter = false;
+var is_metter = false;
+var is_etther = false;
 
 // maksymalnie 3 cyfry w ID 
 const numberInput = document.getElementById("id-input");
@@ -111,7 +116,6 @@ function create_zawartosc(sekcja_id) {
   sekcja.appendChild(zawartosc)
 }
 
-
 // zdjęcie obiektu
 function img_button() {
   var img_button = document.getElementById("img-button");
@@ -129,3 +133,41 @@ function img_button() {
     img_div.style.display = "none";
   }
 }
+
+// TODO dokończyć klasy (zmieniać tło)
+// klasy
+function safe() {
+  is_safe = true;
+  is_euclid = false;
+  is_keter = false;
+}
+function euclid() {
+  is_safe = false;
+  is_euclid = true;
+  is_keter = false;
+}
+function keter() {
+  is_safe = false;
+  is_euclid = false;
+  is_keter = true;
+}
+function setter() {
+  is_setter = true;
+  is_metter = false;
+  is_etther = false;
+}
+function metter() {
+  is_setter = false;
+  is_metter = true;
+}
+function etther() {
+  is_setter = false;
+  is_etther = true;
+}
+
+document.getElementById("safe-btn").addEventListener("click", safe);
+document.getElementById("euclid-btn").addEventListener("click", euclid);
+document.getElementById("keter-btn").addEventListener("click", keter);
+document.getElementById("setter-btn").addEventListener("click", setter);
+document.getElementById("metter-btn").addEventListener("click", metter);
+document.getElementById("etther-btn").addEventListener("click", etther);
