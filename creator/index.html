@@ -36,7 +36,7 @@
 					<option value="przesluchanie">Przesłuchanie</option>
 					<option value="badanie">Badanie</option>
 				</select>
-				<button class="dodaj-sekcje">Dodaj sekcję</button>
+				<button onclick="create_sekcja()" class="dodaj-sekcje">Dodaj sekcję</button>
 			</div>
 			<div class="right">
 				<p>Klasy</p>
@@ -48,14 +48,14 @@
 				<a class="deactivate"><img src="/media/class/metter.png"></a>
 				<a class="deactivate"><img src="/media/class/etther.png"></a>
 			</div>
-			<div class="content">
-				<div class="sekcja" id="sekcja_1">
+			<div class="content" id="content">
+				<!-- <div class="sekcja" id="sekcja_1">
 					<button onclick="close_sekcja(1)" class="close">X</button>
 					<h3>Sekcja 1</h3>
 					<p>Tekst</p>
 					<button>Dodaj tekst</button>
-					<div class="zawartosc" id="zawartosc_1_1">
-						<button onclick="close_zawartosc(1, 1)" style="float: right; background-color: rgba(0, 0, 0, 0); border: none; cursor: pointer;">X</button>
+					<div class="zawartosc" id="zawartosc_1">
+						<button onclick="close_zawartosc(1)" style="float: right; background-color: rgba(0, 0, 0, 0); border: none; cursor: pointer;">X</button>
 						<label>Nazwa</label>
 						<input class="nazwa" type="text">
 						<a>Zawartość</a>
@@ -118,7 +118,7 @@
 						<br>
 						<textarea class="zawartosc-text"></textarea>
 					</div>
-				</div>
+				</div> -->
 			</div>
 			<br>
 			<div style="display: inline-block; width: 100%; text-align: center;">
