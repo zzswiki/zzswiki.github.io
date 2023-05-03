@@ -134,35 +134,78 @@ function img_button() {
   }
 }
 
-// TODO dokończyć klasy (zmieniać tło)
 // klasy
 function safe() {
   is_safe = true;
   is_euclid = false;
   is_keter = false;
+
+  var safe = document.getElementById("safe-btn");
+  var euclid = document.getElementById("euclid-btn");
+  var keter = document.getElementById("keter-btn");
+
+  safe.setAttribute("class", "active");
+  euclid.setAttribute("class", "deactivate");
+  keter.setAttribute("class", "deactivate");
 }
 function euclid() {
   is_safe = false;
   is_euclid = true;
   is_keter = false;
+
+  var safe = document.getElementById("safe-btn");
+  var euclid = document.getElementById("euclid-btn");
+  var keter = document.getElementById("keter-btn");
+
+  safe.setAttribute("class", "deactivate");
+  euclid.setAttribute("class", "active");
+  keter.setAttribute("class", "deactivate");
 }
 function keter() {
   is_safe = false;
   is_euclid = false;
   is_keter = true;
+
+  var safe = document.getElementById("safe-btn");
+  var euclid = document.getElementById("euclid-btn");
+  var keter = document.getElementById("keter-btn");
+
+  safe.setAttribute("class", "deactivate");
+  euclid.setAttribute("class", "deactivate");
+  keter.setAttribute("class", "active");
 }
 function setter() {
   is_setter = true;
   is_metter = false;
   is_etther = false;
+
+  var setter = document.getElementById("setter-btn");
+  var metter = document.getElementById("metter-btn");
+  var etther = document.getElementById("etther-btn");
+
+  setter.setAttribute("class", "active");
+  metter.setAttribute("class", "deactivate");
+  etther.setAttribute("class", "deactivate");
 }
 function metter() {
   is_setter = false;
   is_metter = true;
+
+  var setter = document.getElementById("setter-btn");
+  var metter = document.getElementById("metter-btn");
+
+  setter.setAttribute("class", "deactivate");
+  metter.setAttribute("class", "active");
 }
 function etther() {
   is_setter = false;
   is_etther = true;
+
+  var setter = document.getElementById("setter-btn");
+  var etther = document.getElementById("etther-btn");
+
+  setter.setAttribute("class", "deactivate");
+  etther.setAttribute("class", "active");
 }
 
 document.getElementById("safe-btn").addEventListener("click", safe);
