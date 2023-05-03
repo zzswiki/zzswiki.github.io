@@ -4,6 +4,8 @@ var id_nastepnej_zawartosci = 1;
 var lista_sekcji = [];
 var lista_zawartosci = [];
 
+var zdjecie_obiektu = false;
+
 // maksymalnie 3 cyfry w ID 
 const numberInput = document.getElementById("id-input");
 numberInput.addEventListener("input", () => {
@@ -107,4 +109,23 @@ function create_zawartosc(sekcja_id) {
   id_nastepnej_zawartosci += 1;
   var sekcja = document.getElementById(`zawartosc_sekcji_${sekcja_id}`);
   sekcja.appendChild(zawartosc)
+}
+
+
+// zdjęcie obiektu
+function img_button() {
+  var img_button = document.getElementById("img-button");
+  var img_div = document.getElementById("img-div");
+
+  if(zdjecie_obiektu == false){
+    zdjecie_obiektu = !zdjecie_obiektu;
+    img_button.value = "ON";
+    img_button.setAttribute("class", "img-button-on");
+    img_div.style.display = "block";
+  } else {
+    zdjecie_obiektu = !zdjecie_obiektu;
+    img_button.value = "OFF";
+    img_button.setAttribute("class", "img-button-off");
+    img_div.style.display = "none";
+  }
 }

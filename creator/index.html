@@ -23,11 +23,12 @@
 				<input type="number" maxlength="3" id="id-input" class="id-input">
 				<br><br>
 				<p>Zdjęcie obiektu</p>
-				<input type="button" value="ON" class="img-button-on">
-				<div style="display: block;">
+				<input onclick="img_button()" type="button" value="OFF" class="img-button-off" id="img-button">
+				<div style="display: none;" id="img-div">
 					<p>Opis zdjęcia</p>
 					<input type="text">
 				</div>
+				<br>
 				<br>
 				<label for="typ-sekcji">Typ sekcji:</label>
 				<select name="typ-sekcji" id="typ-sekcji">
@@ -49,76 +50,7 @@
 				<a class="deactivate"><img src="/media/class/etther.png"></a>
 			</div>
 			<div class="content" id="content">
-				<!-- <div class="sekcja" id="sekcja_1">
-					<button onclick="close_sekcja(1)" class="close">X</button>
-					<h3>Sekcja 1</h3>
-					<p>Tekst</p>
-					<button>Dodaj tekst</button>
-					<div class="zawartosc" id="zawartosc_1">
-						<button onclick="close_zawartosc(1)" style="float: right; background-color: rgba(0, 0, 0, 0); border: none; cursor: pointer;">X</button>
-						<label>Nazwa</label>
-						<input class="nazwa" type="text">
-						<a>Zawartość</a>
-						<br>
-						<textarea class="zawartosc-text"></textarea>
-					</div>
-				</div>
-				<div class="sekcja">
-					<button class="close">X</button>
-					<h3>Sekcja 2</h3>
-					<p>Przeszłuchanie</p>
-					<label>Przesłuchujący</label>
-					<input type="text">
-					<label>Przesłuchiwany</label>
-					<input type="text">
-					<br>
-					<button>Dodaj tekst</button>
-					<div class="zawartosc">
-						<button style="float: right; background-color: rgba(0, 0, 0, 0); border: none; cursor: pointer;">X</button>
-						<label>Nazwa</label>
-						<input class="nazwa" type="text">
-						<a>Zawartość</a>
-						<br>
-						<textarea class="zawartosc-text"></textarea>
-					</div>
-				</div>
-				<div class="sekcja">
-					<button class="close">X</button>
-					<h3>Sekcja 3</h3>
-					<p>SFA</p>
-					<label>Osoba notująca</label>
-					<input type="text">
-					<br>
-					<button>Dodaj tekst</button>
-					<div class="zawartosc">
-						<button style="float: right; background-color: rgba(0, 0, 0, 0); border: none; cursor: pointer;">X</button>
-						<label>Nazwa</label>
-						<input class="nazwa" type="text">
-						<a>Zawartość</a>
-						<br>
-						<textarea class="zawartosc-text"></textarea>
-					</div>
-				</div>
-				<div class="sekcja">
-					<button class="close">X</button>
-					<h3>Sekcja 4</h3>
-					<p>Badanie</p>
-					<label>Przeprowadzający badanie</label>
-					<input type="text">
-					<br>
-					<label>Przedmioty w badaniu</label>
-					<input type="text">
-					<br>
-					<button>Dodaj tekst</button>
-					<div class="zawartosc">
-						<button style="float: right; background-color: rgba(0, 0, 0, 0); border: none; cursor: pointer;">X</button>
-						<label>Nazwa</label>
-						<input class="nazwa" type="text">
-						<a>Zawartość</a>
-						<br>
-						<textarea class="zawartosc-text"></textarea>
-					</div>
-				</div> -->
+				<!-- content -->
 			</div>
 			<br>
 			<div style="display: inline-block; width: 100%; text-align: center;">
