@@ -70,7 +70,7 @@ function create_sekcja() {
     <button onclick="close_sekcja(${id_nastepnej_sekcji})" class="close">X</button>
     <h3>SFA</h3>
     <label>Osoba notująca</label>
-    <input type="text">
+    <input type="text" id="osoba_notujaca_${id_nastepnej_sekcji}">
     <br>
     <button onclick="create_zawartosc(${id_nastepnej_sekcji})" class="dodaj-tekst">Dodaj tekst</button>
     <div id="zawartosc_sekcji_${id_nastepnej_sekcji}">
@@ -83,9 +83,9 @@ function create_sekcja() {
     <button onclick="close_sekcja(${id_nastepnej_sekcji})" class="close">X</button>
     <h3>Przesłuchanie</h3>
     <label>Przesłuchujący</label>
-    <input type="text">
+    <input type="text" id="przesluchujacy_${id_nastepnej_sekcji}">
     <label>Przesłuchiwany</label>
-    <input type="text">
+    <input type="text" id="przesluchiwany_${id_nastepnej_sekcji}">
     <br>
     <br>
     <button onclick="create_zawartosc(${id_nastepnej_sekcji})" class="dodaj-tekst">Dodaj tekst</button>
@@ -99,19 +99,19 @@ function create_sekcja() {
     <button onclick="close_sekcja(${id_nastepnej_sekcji})" class="close">X</button>
     <h3>Badanie</h3>
     <label>Przeprowadzający badanie</label>
-    <input type="text">
+    <input type="text" id="przeprowadzajacy_badanie_${id_nastepnej_sekcji}">
     <br>
     <label>Przedmioty w badaniu</label>
-    <input type="text">
+    <input type="text" id="przedmioty_w_badaniu_${id_nastepnej_sekcji}">
     <br>
     <button onclick="create_zawartosc(${id_nastepnej_sekcji})" class="dodaj-tekst">Dodaj tekst</button>
     <div id="zawartosc_sekcji_${id_nastepnej_sekcji}">
     </div>`;
   }
 
-  // TODO zrobić by zapisywało typ zawartości
   lista_sekcji.sekcje.push({
     'id' : id_nastepnej_sekcji,
+    'typ' : typ_sekcji,
     'id_zawartosci' : []
   });
 
@@ -128,10 +128,10 @@ function create_zawartosc(sekcja_id) {
   zawartosc.innerHTML = `
     <button onclick="close_zawartosc(${sekcja_id}, ${id_nastepnej_zawartosci})" style="float: right; background-color: rgba(0, 0, 0, 0); border: none; cursor: pointer;">X</button>
     <label>Nazwa</label>
-    <input class="nazwa" type="text">
+    <input class="nazwa" type="text" id="text-nazwa-${id_nastepnej_zawartosci}">
     <a>Zawartość</a>
     <br>
-    <textarea class="zawartosc-text"></textarea>
+    <textarea class="zawartosc-text" id="text-zawartosc-${id_nastepnej_zawartosci}"></textarea>
   `;
 
   for (let i = 0; i < lista_sekcji.sekcje.length; i++){
@@ -255,6 +255,10 @@ function generuj() {
   var klasy_img = "";
   var obiekt_img = "";
   var opis_zdjecia = document.getElementById("opis-zdjecia").value;
+  var sekcje_text = "";
+  var sygnatura_sfa = 1;
+  var sygnatura_przesluchania = 1;
+  var sygnatura_badania = 1;
 
   // klasy
   if (is_safe == true){
@@ -266,20 +270,20 @@ function generuj() {
   } else if (is_keter == true){
     klasy_text = "Keter";
     klasy_img = `<img src="/media/class/keter.png">`;
-  }
+  };
 
   if (is_setter == true){
     klasy_text += ", Setter";
     klasy_img += `<img src="/media/class/setter.png">`;
-  }
+  };
   if (is_metter == true){
     klasy_text += ", Metter";
-    klasy_img += `<img src="/media/class/setter.png">`;
-  }
+    klasy_img += `<img src="/media/class/metter.png">`;
+  };
   if (is_etther == true){
     klasy_text += ", Etther";
     klasy_img += `<img src="/media/class/etther.png">`;
-  }
+  };
 
   // zdjęcie obiektu
   if (zdjecie_obiektu == true){
@@ -288,140 +292,192 @@ function generuj() {
         <img src="media/img1.png" style="width: 250px; height: auto;">
         <p><strong>${opis_zdjecia}</strong></p>
       </div>
+    `;
+  };
+
+  // sekcje
+  for (let i = 0; i < lista_sekcji.sekcje.length; i++){
+    sekcje_text += `
+    <div class="section">
     `
-  }
+    if (lista_sekcji.sekcje[i]['typ'] == "tekst"){
+      for (let x = 0; x < lista_sekcji.sekcje[i]['id_zawartosci'].length; x++){
+        var id_zaw = lista_sekcji.sekcje[i]['id_zawartosci'][x];
+        var nazwa = document.getElementById(`text-nazwa-${id_zaw}`).value;
+        var zawartosc = document.getElementById(`text-zawartosc-${id_zaw}`).value;
+
+        sekcje_text += `
+        <p>
+          <strong>${nazwa}</strong>
+          ${zawartosc}
+          <br>
+        </p>
+        `
+      }
+    } else if (lista_sekcji.sekcje[i]['typ'] == "sfa"){
+      var sekcja_id = lista_sekcji.sekcje[i]['id'];
+      var osoba_notujaca = document.getElementById(`osoba_notujaca_${sekcja_id}`).value;
+
+      sekcje_text += `
+        <p>
+          <strong>Osoba notująca: </strong>
+          ${osoba_notujaca} <br>
+          <strong>sygnatura SFA: </strong>
+          ZZS-${id}-SFA-${sygnatura_sfa.toString().padStart(3, '0')}
+        </p>
+        <blockquote>
+          <p><strong>&lt;Początek SFA&gt;</strong></p>
+      `
+      sygnatura_sfa++;
+      for (let x = 0; x < lista_sekcji.sekcje[i]['id_zawartosci'].length; x++){
+        var id_zaw = lista_sekcji.sekcje[i]['id_zawartosci'][x];
+        var nazwa = document.getElementById(`text-nazwa-${id_zaw}`).value;
+        var zawartosc = document.getElementById(`text-zawartosc-${id_zaw}`).value;
+
+        sekcje_text += `
+        <p><b>${nazwa}</b> ${zawartosc}</p>
+        `
+      }
+      sekcje_text += `
+          <p><strong>&lt;Koniec nagrania&gt;</strong></p>
+        </blockquote>
+      `
+    } else if (lista_sekcji.sekcje[i]['typ'] == "przesluchanie"){
+      var sekcja_id = lista_sekcji.sekcje[i]['id'];
+      var przesluchujacy = document.getElementById(`przesluchujacy_${sekcja_id}`).value;
+      var przesluchiwany = document.getElementById(`przesluchiwany_${sekcja_id}`).value;
+
+      sekcje_text += `
+          <p>
+            <strong>Audiolog z przesłuchania ${przesluchiwany}:</strong><br>
+            <br>
+            <strong>Przesłuchujący: </strong>
+            ${przesluchujacy} <br>
+            <strong>Przesłuchiwany: </strong>
+            ${przesluchiwany} <br>
+            <strong>Sygnatura przesłuchania: </strong>
+            ZZS-${id}-LOG-${sygnatura_przesluchania.toString().padStart(3, '0')}
+          </p>
+        <blockquote>
+          <p><strong>&lt;Początek nagrania&gt;</strong></p>
+      `
+      sygnatura_przesluchania++;
+      for (let x = 0; x < lista_sekcji.sekcje[i]['id_zawartosci'].length; x++){
+        var id_zaw = lista_sekcji.sekcje[i]['id_zawartosci'][x];
+        var nazwa = document.getElementById(`text-nazwa-${id_zaw}`).value;
+        var zawartosc = document.getElementById(`text-zawartosc-${id_zaw}`).value;
+
+        sekcje_text += `
+        <p><b>${nazwa}:</b> ${zawartosc}</p>
+        `
+      }
+      sekcje_text += `
+          <p><strong>&lt;Koniec nagrania&gt;</strong></p>
+        </blockquote>
+      `
+    } else if (lista_sekcji.sekcje[i]['typ'] == "badanie"){
+      var sekcja_id = lista_sekcji.sekcje[i]['id'];
+      var przeprowadzajacy_badanie = document.getElementById(`przeprowadzajacy_badanie_${sekcja_id}`).value;
+      var przedmioty_w_badaniu = document.getElementById(`przedmioty_w_badaniu_${sekcja_id}`).value;
+
+      sekcje_text += `
+      <p>
+        <strong>Badanie przeprowadzone na ZZS-${id}:</strong><br>
+        <br>
+        <strong>Przeprowadzający badanie: </strong>
+        ${przeprowadzajacy_badanie} <br>
+        <strong>Obiekt: </strong>
+        ZZS-${id} <br>
+        <strong>Sygnatura badania: </strong>
+        ZZS-${id}-LOG-B-${sygnatura_badania} <br>
+        <strong>Przedmioty wykorzystane w badaniu: </strong>
+        ${przedmioty_w_badaniu}
+      </p>
+      <blockquote>
+      `
+
+      sygnatura_badania++;
+      for (let x = 0; x < lista_sekcji.sekcje[i]['id_zawartosci'].length; x++){
+        var id_zaw = lista_sekcji.sekcje[i]['id_zawartosci'][x];
+        var nazwa = document.getElementById(`text-nazwa-${id_zaw}`).value;
+        var zawartosc = document.getElementById(`text-zawartosc-${id_zaw}`).value;
+
+        sekcje_text += `
+        <p><strong>${nazwa}</strong></p>
+        <p>${zawartosc}</p>
+        `
+      }
+      sekcje_text += `
+      </blockquote>
+      `
+    }
+
+    sekcje_text += `
+    </div>
+    `
+    
+    if (i != lista_sekcji.sekcje.length - 1){
+      sekcje_text += `
+        <hr>
+      `
+    }
+  };
 
   // output
   output.value = `
-    <!DOCTYPE html>
-    <html lang="pl">
-      <head>
-        <meta charset="UTF-8">
-        <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <link rel="stylesheet" type="text/css" href="/style/main.css">
-        <link id="theme" rel="stylesheet" type="text/css" href="/style/dark/site-dark.css">
-        <link rel="icon" href="/media/zzs.png">
-        <title>ZZS-Wiki - ZZS-${id}</title>
-      </head>
-      <body>
-        <!-- START top bar -->
-        <div id="top">
-          <div class="topnav">
-            <a href="/">Home</a>
-          </div>
-        </div>
-        <!-- END top bar -->
-    
-        <!-- main content -->
-        <div class="siteWeb">
-          <!-- START head -->
-          <h1>ZZS-${id}</h1>
-          <div class="class">
-            ${klasy_img}
-          </div>
-          <!-- END head -->
-    
-          <!-- START section 1 -->
-          <div class="section">
-            <!-- START object img -->
-            ${obiekt_img}
-            <!-- END object img -->
-            
-            <!-- START descriptionn -->
-            <p>
-              <strong>Identyfikator podmiotu: </strong>
-              ZZS-${id} <br>
-              <br>
-              <strong>Klasa podmiotu: </strong>
-              ${klasy_text} <br>
-              <br>
-              <strong>Specjalne Czynności Przechowawcze: </strong>
-              Podmiot musi być przechowywanny w celi klasy 5b. Pomieszczenie musi być szczelnie zamknięte ze ścianami symulującymi otwarty świat oraz od godzinny 17 należy włączyć dźwięki
-              symulujące jego roziców oraz 1 z 10 w telewizorze. <i>Maksymalna prętkość internetu w przechowywalni musi wynosić 1,5 Mb/s. Obowiązkowe jest cotygodniowe sprawdzenie przechowywalni pod kątem znalezienia prób przyśpieszenia internetu przez ZZS-002. (Zostało to zmienione w ZZS-002-SFA-001) </i>
-              Pomieszczenie musi być monitorowane 24/7 lecz nikt oprócz uprawnień <b>WTA</b> nie może mieć dostępu do nagrań.<br>
-              <br>
-              <strong>Opis: </strong>
-              Jest to niski obiekt mający około 1,5m. Jego waga jest nie znana, a o jego wyglądzie zewnętrznym można powiedzieć że ma lekką nadwagę oraz wygląda jak 14 latek. Jego ulubionym zajęciem jest granie / chwalenie się komputerem jego 
-              ojca, oglądanie anime oraz nękanie <a href="/obiekty/ZZS-012/">ZZS-012</a>. ZZS-002 nagrywa każdą rozmowę oraz robi screany wszystkiego by dać to do teczek, przez takie działanie wszystkie teczki zająmują mu 75% dysku z 1tb. Obiekt 
-              jest uzależniony od oglądania Anime, doszło to do takiego momentu że zaczą twierdzić iż jest anime dziewczynką <i>[ Więcej na temat tego jest na nagraniu "ZZS-002-LOG-001" ]</i>. Z niewyjaśnionych przyczyn obiekt przebywa przed komputerem 
-              w następujących godzinach: <i>[poniedziałek - czwartek { 18 - 21 }, piątek { 18 - 22 }, sobota { 11 - 12, 18 - 22 }, niedziela { 11 - 12, 18 - 21 }]</i>.
-            </p>
-            <!-- END description -->
-    
-          </div>
-          <!-- END section 1 -->
-    
-          <!-- START section 2 -->
-          <div class="section">
-            <hr>
-          
-            <!-- START audiolog -->
-            <p>
-              <strong>Audiolog z przesłuchania ZZS-002:</strong><br>
-              <br>
-              <strong>Przesłuchujący: </strong>
-              Dr ███ <br>
-              <strong>Przesłuchiwany: </strong>
-              ZZS-002 <br>
-              <strong>Sygnatura przesłuchania: </strong>
-              ZZS-002-LOG-001
-            </p>
-            <blockquote>
-              <p><strong>&lt;Początek nagrania&gt;</strong></p>
-              <p>[czasu ████████ ████████, Strefa Badawcza ██]</p>
-              <p><strong>Dr ███: </strong> Witaj 002, jak się dzisiaj czujesz?</p>
-              <p><strong>ZZS-002: </strong> Dobrze.</p>
-              <p><strong>Dr ███: </strong> Doszły mnie słuchy że zacząłeś oglądać anime. Zgadza się?</p>
-              <p><strong>ZZS-002: </strong> Tak.</p>
-              <p><strong>Dr ███: </strong> Dostaje informacje od człąków personelu że twoje zachowanie jest, jak by to powiedziec, dziwniejsze, bardziej kobiece czy jakoś tak. Możesz wytłumaczyć?</p>
-              <p><strong>ZZS-002: </strong> Moje zachowanie jest spowodowane tym że jestem kobietą, a dokładniej dziewczyną.</p>
-              <p><strong>Dr ███: </strong> Jak to dziewczyną? Wszystkie badania stwierdzają że jesteś mężczyzną.</p>
-              <p><strong>ZZS-002: </strong> Bo to są tylko badania zewnętrzne. Wewnątrz tego brzydkiego, brudnego, spasionego chłopca znajdzuje się dziewczynka, taka mała, słotka, urocza, taka jak w anime które oglądam. Kocham je. Muszę mieć ich więcej. Słyszysz? Chce ich więcej! Sprowadź mi je!</p>
-              <p><strong>Dr ███: </strong> Kogo?</p>
-              <p><strong>ZZS-002: </strong> Je. Przynieś mi je.</p>
-              <p>[ Obiekt wyciąga kartkę z wygrukowanym zdjęciem <a href="media/img2.jpg" target="_blank">[LINK]</a> ]</p>
-              <p><strong>Dr ███: </strong> Wrócimy jeszcze do tego na kolejnym spotkaniu. Jak narazie to będzie na tyle.</p>
-              <p><strong>&lt;Koniec nagrania&gt;</strong></p>
-            </blockquote>
-            <!-- END audiolog -->
-    
-          </div>
-          <!-- END section 2 -->
-    
-          <!-- START section 3 -->
-          <div class="section">
-            <hr>
-    
-            <!-- START SFA -->
-              <p>
-                <strong>Osoba notująca: </strong>
-                Dr ███ <br>
-                <strong>sygnatura SFA: </strong>
-                ZZS-002-SFA-001
-              </p>
-              <blockquote>
-                <p><strong>&lt;Początek SFA&gt;</strong></p>
-                <p>[01.08.2022 20:46, Strefa Badawcza ██]</p>
-                <p><b>T + 0:00</b> ZZS-002 zachowuje się dziwnie, o godzinie 18 zammiast usiąść przed komputerem jak zazwyczaj zaczą krążyć wokoł pokooju.</p>
-                <p><b>T + 3:24</b> Obiekt zaczą wąchać ścianę, wydaje się to dziwne zwłaszcza że chwilę wcześniej polizał swoją ulubioną figurkę anime dziewczynki.</p>
-                <p><b>T + 5:57</b> Jesteśmy gotowi na użycie protokołu "PRZEMOC", obiekt zaczą wydrapywać dziurę w ścianie.</p>
-                <p><b>T + 7:16</b> Wkroczenie drużyny GROM nic nie dało, obiekt zabił każdego kto wszedł do przechowywalni, postanowiliśmy przeczekać by zobaczyć dalsze działania obiektu.</p>
-                <p><b>T + 9:11</b> Obiekt znalazł połączenie interentowe w ścianie, po kontakcie z radą uznaliśmy że możemy pozwolić mu na dalsze działania</p>
-                <p><b>T + 10:43</b> Udało się podłączyć obiektowi komputer z połączeniem internetowym w ścianie.</p>
-                <p><b>20:58</b> Obiekt o godzinie 20:58 włączył discorda, wysłał na jakiś serwer screen, udało nam się go przechwycić <a href="media/img3.png" target="_blank">[LINK]</a></p>
-                <p><strong>&lt;Koniec SFA&gt;</strong></p>
-              </blockquote>
-            <!-- END SFA -->
-    
-          </div>
-          <!-- END section 3 -->
-    
-          <p>By <a href="/profile/${autor_nick}.html">${autor_wyswietlana}</a></p>
-        </div>
-        <!-- END content -->
-        <script src="/js/theme/datk-theme-site.js"></script>
-      </body>
-    </html>
+<!DOCTYPE html>
+<html lang="pl">
+  <head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="/style/main.css">
+    <link id="theme" rel="stylesheet" type="text/css" href="/style/dark/site-dark.css">
+    <link rel="icon" href="/media/zzs.png">
+    <title>ZZS-Wiki - ZZS-${id}</title>
+  </head>
+  <body>
+    <!-- START top bar -->
+    <div id="top">
+      <div class="topnav">
+        <a href="/">Home</a>
+      </div>
+    </div>
+    <!-- END top bar -->
+
+    <!-- main content -->
+    <div class="siteWeb">
+      <!-- START object img -->
+      ${obiekt_img}
+      <!-- END object img -->
+      <!-- START head -->
+      <h1>ZZS-${id}</h1>
+      <div class="class">
+        ${klasy_img}
+      </div>
+      <!-- END head -->
+
+      <!-- START section 1 -->
+      <div class="section">
+        <!-- START descriptionn -->
+        <p>
+          <strong>Identyfikator podmiotu: </strong>
+          ZZS-${id} <br>
+          <br>
+          <strong>Klasa podmiotu: </strong>
+          ${klasy_text} <br>
+          <br>
+        <!-- END description -->
+
+      </div>
+      
+      ${sekcje_text}
+
+      <p>By <a href="/profile/${autor_nick}.html">${autor_wyswietlana}</a></p>
+    </div>
+    <!-- END content -->
+    <script src="/js/theme/datk-theme-site.js"></script>
+  </body>
+</html>
   `
 }
