@@ -48,10 +48,22 @@
 
 .kreator .right .active{
 	background-color: rgb(32, 156, 156);
+	border-radius: 10px;
+	transition: 0.1s;
 }
 
 .kreator .right .deactivate {
 	background-color: azure;
+	border-radius: 5px;
+	transition: 0.1s;
+}
+
+.kreator .right .active:hover{
+	background-color: rgb(30, 145, 145);
+}
+
+.kreator .right .deactivate:hover {
+	background-color: rgb(233, 233, 233);
 }
 
 .kreator .right a img {
@@ -67,6 +79,12 @@
 	border: none;
 	cursor: pointer;
 	margin-bottom: 20px;
+	transition: 0.2s;
+}
+
+.dodaj-sekcje:hover {
+	background-color: #ccb846;
+	border-radius: 4px;
 }
 
 .img-button-off {
@@ -74,6 +92,12 @@
 	border: none;
 	padding: 5px 13px;
 	cursor: pointer;
+	transition: 0.2s;
+}
+
+.img-button-off:hover{
+	background-color: rgb(182, 45, 45);
+	border-radius: 4px;
 }
 
 .img-button-on {
@@ -81,6 +105,12 @@
 	border: none;
 	padding: 5px 13px;
 	cursor: pointer;
+	transition: 0.2s;
+}
+
+.img-button-on:hover {
+	background-color: #66c25d;
+	border-radius: 4px;
 }
 
 .generuj-btn {
@@ -92,6 +122,12 @@
 	margin-right: 20px;
 	border: none;
 	cursor: pointer;
+	transition: 0.5s;
+}
+
+.generuj-btn:hover {
+	background-color: #3e52c0;
+	border-radius: 10px;
 }
 
 .content {
@@ -119,6 +155,11 @@
 	border-radius: 20px;
 	cursor: pointer;
 	border: none;
+	transition: 0.5s;
+}
+
+.sekcja .close:hover{
+	border-radius: 5px;
 }
 
 .zawartosc {
@@ -140,7 +181,15 @@ textarea {
 	resize: vertical;
 }
 
-/* docs */
+.dodaj-tekst {
+	border: none;
+	background-color: #6ed165;
+	padding: 5px 10px;
+	cursor: pointer;
+	transition: 0.2s;
+}
 
-
-/* output */
+.dodaj-tekst:hover{
+	border-radius: 5px;
+	background-color: #68c75f;
+}
