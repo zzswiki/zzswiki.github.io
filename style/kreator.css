@@ -1,0 +1,195 @@
+.panels {
+  display: flex;
+  justify-content: space-between;
+}
+
+.kreator, .docs, .output-html {
+  background-color: #D9D9D9;
+  margin: 20px;
+  box-shadow: 7px 7px 25px -4px rgba(66, 68, 90, 1);
+  border-radius: 10px;
+  height: fit-content;
+	padding-bottom: 15px;
+}
+
+.kreator, .docs {
+  width: 30%;
+}
+
+.output-html {
+  width: 40%;
+}
+
+
+/* kreator */
+
+.kreator .left {
+	width: 50%;
+	text-align: center;
+	float: left;
+}
+
+.kreator .left .id-input {
+	width: 40px;
+}
+
+.kreator .right {
+	width: 50%;
+	float: left;
+	text-align: center;
+}
+
+.kreator .right a {
+	height: 50px;
+	width: 50px;
+	display: inline-block;
+	cursor: pointer;
+}
+
+.kreator .right .active{
+	background-color: rgb(32, 156, 156);
+	border-radius: 10px;
+	transition: 0.1s;
+}
+
+.kreator .right .deactivate {
+	background-color: azure;
+	border-radius: 5px;
+	transition: 0.1s;
+}
+
+.kreator .right .active:hover{
+	background-color: rgb(30, 145, 145);
+}
+
+.kreator .right .deactivate:hover {
+	background-color: rgb(233, 233, 233);
+}
+
+.kreator .right a img {
+	width: 50px;
+	height: auto;
+	margin-bottom: 10px;
+}
+
+.dodaj-sekcje {
+	margin-top: 5px;
+	background-color: #dbc549;
+	padding: 6px 14px;
+	border: none;
+	cursor: pointer;
+	margin-bottom: 20px;
+	transition: 0.2s;
+}
+
+.dodaj-sekcje:hover {
+	background-color: #ccb846;
+	border-radius: 4px;
+}
+
+.img-button-off {
+	background-color: rgb(199, 47, 47);
+	border: none;
+	padding: 5px 13px;
+	cursor: pointer;
+	transition: 0.2s;
+}
+
+.img-button-off:hover{
+	background-color: rgb(182, 45, 45);
+	border-radius: 4px;
+}
+
+.img-button-on {
+	background-color: #71DE68;
+	border: none;
+	padding: 5px 13px;
+	cursor: pointer;
+	transition: 0.2s;
+}
+
+.img-button-on:hover {
+	background-color: #66c25d;
+	border-radius: 4px;
+}
+
+.generuj-btn {
+	float: right;
+	background-color: #475EDC;
+	margin-top: 40px;
+	color: white;
+	padding: 6px 20px;
+	margin-right: 20px;
+	border: none;
+	cursor: pointer;
+	transition: 0.5s;
+}
+
+.generuj-btn:hover {
+	background-color: #3e52c0;
+	border-radius: 10px;
+}
+
+.content {
+	margin-top: 20px;
+	padding: 20px;
+}
+
+.sekcja {
+	background-color: #EEEBEB;
+	width: 100%;
+	display: inline-block;
+	box-shadow: 7px 7px 14px -4px rgba(66, 68, 90, 1);
+	margin-top: 25px;
+}
+
+.sekcja * {
+	margin: 15px;
+}
+
+.sekcja .close {
+	float: right;
+	background-color: #B11313;
+	color: white;
+	padding: 5px 10px;
+	border-radius: 20px;
+	cursor: pointer;
+	border: none;
+	transition: 0.5s;
+}
+
+.sekcja .close:hover{
+	border-radius: 5px;
+}
+
+.zawartosc {
+	background-color: #D9D9D9;
+	padding-top: 20px;
+}
+
+.zawartosc-text {
+  width: 90%;
+  height: 20vh;
+  padding: 10px;
+  box-sizing: border-box;
+  border: 2px solid #ccc;
+  border-radius: 4px;
+  resize: vertical;
+}
+
+textarea {
+	resize: vertical;
+}
+
+.dodaj-tekst {
+	border: none;
+	background-color: #6ed165;
+	padding: 5px 10px;
+	cursor: pointer;
+	transition: 0.2s;
+}
+
+.dodaj-tekst:hover{
+	border-radius: 5px;
+	background-color: #68c75f;
+}
