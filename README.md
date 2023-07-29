@@ -1,2 +1,2 @@
 # zzswiki.github.io
-http://zzs-wiki.ml
+https://zzswiki.github.io/
