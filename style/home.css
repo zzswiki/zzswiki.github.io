@@ -61,3 +61,25 @@ body {
 	margin: -15px 0;
 	font-weight: bold;
 }
+
+.content {
+	margin-left: 30px;
+}
+
+.obiekty {
+	float: left;
+	background-color: #D9D9D9;
+	width: fit-content;
+	padding: 1px 20px;
+	border-radius: 20px;
+	border: black 1px solid;
+}
+
+.obiekty h2 {
+	text-align: center;
+	color: rgb(162,0,17);
+}
+
+.obiekty a {
+	color: rgb(162,0,17);
+}
