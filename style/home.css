@@ -49,6 +49,7 @@ body {
 
 .main {
 	margin-left: 250px;
+	margin-top: 25px;
 }
 
 .info {
@@ -57,18 +58,19 @@ body {
 }
 
 .info-big {
-	font-size: 50px;
+	font-size: 44px;
 	margin: -15px 0;
 	font-weight: bold;
 }
 
 .content {
 	margin-left: 30px;
+	margin-top: 25px;
 }
 
 .obiekty {
 	float: left;
-	background-color: #D9D9D9;
+	background-color: #e4e4e4;
 	width: fit-content;
 	padding: 1px 20px;
 	border-radius: 20px;
