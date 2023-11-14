@@ -1,88 +1,33 @@
 <!DOCTYPE html>
-<html lang="pl">
-	<head>
-		<meta charset="UTF-8">
-		<meta http-equiv="X-UA-Compatible" content="IE=edge">
-		<meta name="viewport" content="width=device-width, initial-scale=1.0">
-		<link id="theme" rel="stylesheet" type="text/css" href="/style/dark/main-dark.css">
-		<link href='https://unpkg.com/css.gg@2.0.0/icons/css/sun.css' rel='stylesheet'>
-		<link href='https://unpkg.com/css.gg@2.0.0/icons/css/moon.css' rel='stylesheet'>
-		<link rel="icon" href="/media/zzs.png">
-		<title>ZZS-Wiki</title>
-	</head>
-	<body>
-		<div id="informacja" style="position: fixed; bottom: -5px; text-align: center; width: 100%; display: none;">
-			<div style="margin: 0 15%; background-color: rgb(160, 160, 160); border-radius: 5px; border: 2px solid black; padding-bottom: 15px;">
-				<h1>Informacja o plikach cookie</h1>
-				<p>Strona wykorzystuje pliki cookie wymagane do poprawnego jej działania.</p>
-				<button onclick="acceptTermsAndConditions()" style="background-color: greenyellow; border-radius: 5px; padding: 7px 15px;">Przejdź dalej</button>
-			</div>
-		</div>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>ZZS-Wiki</title>
+	<link rel="stylesheet" href="/style/home.css">
+	<link rel="icon" href="/media/zzs.png">
+</head>
+<body>
+	<div class="left-panel">
+		<img src="/media/zzs.png">
+		<h1>Wiki</h1>
 
-		<div id="top">
-			<div class="topnav">
-				<a class="active" href="/">Home</a>
-				<a class="" href="/creator/">Kreator</a>
-			</div>
+		<a class="left-panel-button active" href="/">
+			Home
+		</a>
+		<a class="left-panel-button" href="/">
+			Home
+		</a>
+		<a class="left-panel-button" href="/">
+			Home
+		</a>
+	</div>
+	<div class="main">
+		<div class="info">
+			<p>OSTRZEŻENIE: BAZA DANYCH FUNDACJI ZZS JEST OBJĘTA</p>
+			<p class="info-big">KLAUZULĄ TAJNOŚCI</p>
+			<p>OSOBY PRÓBUJĄCE UZYSKAĆ NIEAUTORYZOWANY DOSTĘP ZOSTANĄ ZLOKALIZOWANE I POCIĄGNIĘTE DO ODPOWIEDZIALNOŚCI</p>
 		</div>
-		<div class="top">
-			<a class="active" id="toggle-btn">
-				<i class="gg-sun"></i>
-				<i class="gg-moon"></i>
-			</a>
-			<img src="/media/zzs.png">
-			<h1 style="margin-top: -10px; font-size: 50px;">Wiki</h1>
-		</div>
-		<div id="info">
-			<a>OSTRZEŻENIE: BAZA DANYCH FUNDACJI ZZS JEST OBJĘTA</a><br>
-			<a style="font-weight: 800; font-size: 5vh;">KLAUZULĄ TAJNOŚCI</a><br>
-			<a>OSOBY PRÓBUJĄCE UZYSKAĆ NIEAUTORYZOWANY DOSTĘP ZOSTANĄ ZLOKALIZOWANE I POCIĄGNIĘTE DO ODPOWIEDZIALNOŚCI</a><br>
-		</div>
-		<div id="web">
-			<div id="lista">
-				<h2>Obiekty</h2>
-				<ul>
-					<a><a href="/obiekty/ZZS-002/">ZZS-002</a> - Alan</a><br>
-					<a><a href="/obiekty/ZZS-003/">ZZS-003</a> - Proffesor Xd</a><br>
-					<a><a href="/obiekty/ZZS-004/">ZZS-004</a> - Piwniczak</a><br>
-					<a><a href="/obiekty/ZZS-007/">ZZS-007</a> - Majkia</a><br>
-					<a><a href="/obiekty/ZZS-008/">ZZS-008</a> - StSuper</a><br>
-					<!-- <a><a href="/obiekty/ZZS-008-1/">ZZS-008-1</a> - tak</a><br> -->
-					<!-- <a><a href="/obiekty/ZZS-009/">ZZS-009</a> - tak</a><br> -->
-					<a><a href="/obiekty/ZZS-012/">ZZS-012</a> - Azmun</a><br>
-					<!-- <a><a href="/obiekty/ZZS-015/">ZZS-015</a> - tak</a><br> -->
-					<!-- <a><a href="/obiekty/ZZS-016/">ZZS-016</a> - tak</a><br> -->
-					<a><a href="/obiekty/ZZS-017/">ZZS-017</a> - puszka pepsi</a><br>
-					<a><a href="/obiekty/ZZS-018/">ZZS-018</a> - cukierki</a><br>
-					<!-- <a><a href="/obiekty/ZZS-022/">ZZS-022</a> - tak</a><br> -->
-					<a><a href="/obiekty/ZZS-024/">ZZS-024</a> - rasizm</a><br>
-					<a><a href="/obiekty/ZZS-026/">ZZS-026</a> - kamień</a><br>
-					<!-- <a><a href="/obiekty/ZZS-038/">ZZS-038</a> - tak</a><br> -->
-					<a><a href="/obiekty/ZZS-041/">ZZS-041</a> - Banan zagłady</a><br>
-					<a><a href="/obiekty/ZZS-042/">ZZS-042</a> - AI</a><br>
-					<a><a href="/obiekty/ZZS-047/">ZZS-047</a> - Hestia</a><br>
-					<a><a href="/obiekty/ZZS-068/">ZZS-068</a> - Belzedup</a><br>
-					<!-- <a><a href="/obiekty/ZZS-069/">ZZS-069</a> - Gejoza</a><br> -->
-				</ul>
-			</div>
-			<div id="content">
-				<div class="news">
-					<div class="klasy">
-						<img src="/media/class/safe.png">
-						<h1><a href="/klasy" style="color: rgb(162,0,17);">Klasy</a></h1>
-						<p>Opis klas określających zagrożenie oraz trudności przechowywania obiektów.</p>
-					</div>
-				</div>
-			</div>
-		</div>
-		<footer>
-			<a>WebSite hosted on GitHub</a>
-			<a href="https://github.com/zzswiki/zzswiki.github.io" style="color: rgb(187,0,17); margin-left: 2vh;" target="_blank">GitHub repo</a>
-			<a style="margin-left: 16vh;">Created by zzswiki</a>
-			<a href="https://github.com/zzswiki" style="color: rgb(187,0,17); margin-left: 2vh;" target="_blank">GitHub</a>
-			<a style="float: right;">Main creator: PieselKlif</a>
-		</footer>
-		<script src="/js/theme/dark-theme-main.js"></script>
-		<script src="/js/plikiCookie.js"></script>
-	</body>
+	</div>
+</body>
 </html>
