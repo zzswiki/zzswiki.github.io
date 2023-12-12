@@ -6,12 +6,16 @@
 	<title>ZZS-Wiki</title>
 	<link rel="stylesheet" href="/style/home.css">
 	<link rel="icon" href="/media/zzs.png">
+
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+	<script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+	<script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
 </head>
 <body>
 	<div class="left-panel">
 		<img src="/media/zzs.png">
 		<h1>Wiki</h1>
-
+		
 		<a class="left-panel-button active" href="/">
 			Home
 		</a>
@@ -21,9 +25,12 @@
 		<a class="left-panel-button" href="/creator/">
 			Kreator
 		</a>
+
+		<ion-icon name="sunny-outline" id="sun"></ion-icon>
 	</div>
 	<div class="main">
 		<div class="info">
+			<p style="padding: 10px; background-color: aqua; width: fit-content; height: fit-content;" id="button">button</p>
 			<p>OSTRZEŻENIE: BAZA DANYCH FUNDACJI ZZS JEST OBJĘTA</p>
 			<p class="info-big">KLAUZULĄ TAJNOŚCI</p>
 			<p>OSOBY PRÓBUJĄCE UZYSKAĆ NIEAUTORYZOWANY DOSTĘP ZOSTANĄ ZLOKALIZOWANE I POCIĄGNIĘTE DO ODPOWIEDZIALNOŚCI</p>
@@ -57,5 +64,7 @@
 			</div>
 		</div>
 	</div>
+
+	<script src="/js/theme.js"></script>
 </body>
 </html>
