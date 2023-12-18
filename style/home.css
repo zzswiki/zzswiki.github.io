@@ -2,6 +2,10 @@
 	/* light */
 	--bg-color: #ffffff;
 	--theme-button-color: #000000;
+	--left-panel: #9F2A30;
+	--left-button-hover: #852328;
+	--obiekty-bg-color: #e4e4e4;
+	--info: rgb(120, 0, 0);
 }
 
 body {
@@ -14,12 +18,16 @@ body {
 
 .dark-theme {
 	/* dark */
-	--bg-color: #1f1f1f;
+	--bg-color: #282928;
 	--theme-button-color: #fff;
+	--left-panel: #7e1016;
+	--left-button-hover: #77090f;
+	--obiekty-bg-color: #a0a0a0;
+	--info: rgb(172, 0, 0);
 }
 
 .left-panel {
-	background-color: #9F2A30;
+	background-color: var(--left-panel);
 	width: 250px;
 	height: 100vh;
 	text-align: center;
@@ -27,6 +35,8 @@ body {
 	float: left;
 	position: fixed;
 	top: 0;
+
+	transition: 0.5s;
 }
 
 .left-panel img {
@@ -53,7 +63,7 @@ body {
 }
 
 .left-panel-button:hover {
-	background-color: #852328;
+	background-color: var(--left-button-hover);
 }
 
 .left-panel-button.active {
@@ -69,7 +79,9 @@ body {
 
 .info {
 	text-align: center;
-	color: rgb(120, 0, 0);
+	color: var(--info);
+
+	transition: 0.5s;
 }
 
 .info-big {
@@ -85,11 +97,13 @@ body {
 
 .obiekty {
 	float: left;
-	background-color: #e4e4e4;
+	background-color: var(--obiekty-bg-color);
 	width: fit-content;
 	padding: 1px 20px;
 	border-radius: 20px;
 	border: black 1px solid;
+
+	transition: 0.5s;
 }
 
 .obiekty h2 {
