@@ -1,17 +1,21 @@
 :root {
 	/* light */
-	--bg-color-light: #ffffff;
+	--bg-color: #ffffff;
+	--theme-button-color: #000000;
 }
 
 body {
 	margin: 0;
 	font-family: Arial, Helvetica, sans-serif;
-	background-color: var(--bg-color-light);
+	background-color: var(--bg-color);
+
+	transition: 0.5s;
 }
 
 .dark-theme {
 	/* dark */
-	--bg-color-light: #ff0000;
+	--bg-color: #1f1f1f;
+	--theme-button-color: #fff;
 }
 
 .left-panel {
@@ -53,8 +57,8 @@ body {
 }
 
 .left-panel-button.active {
-	background-color: #fff;
-	color: black;
+	background-color: var(--bg-color);;
+	color: var(--theme-button-color);
 	font-weight: bold;
 }
 
@@ -95,4 +99,18 @@ body {
 
 .obiekty a {
 	color: rgb(162,0,17);
+}
+
+.themeButton {
+	background-color: var(--bg-color);
+	color: var(--theme-button-color);
+	position: absolute;
+	bottom: 10px;
+	left: 10px;
+	border-radius: 5px;
+	padding: 5px;
+	cursor: pointer;
+	font-size: 25px;
+
+	transition: 0.5s;
 }

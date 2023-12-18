@@ -1,9 +1,17 @@
-$('#button').on('click', function () {
+if (localStorage.getItem('darkTheme') == true){
+	$('body').addClass('dark-theme');
+} else {
+	localStorage.setItem("darkTheme", false);
+}
+
+$('#themeButton').on('click', function () {
 	$('body').toggleClass('dark-theme');
 
 	if($('body').hasClass('dark-theme')){
-		$('#sun').prop('name', 'moon-outline');
+		$('#themeButton').prop('name', 'moon-outline');
+		localStorage.setItem("darkTheme", true);
 	} else {
-		$('#sun').prop('name', 'sunny-outline');
+		localStorage.setItem("darkTheme", false);
+		$('#themeButton').prop('name', 'sunny-outline');
 	};
 });
