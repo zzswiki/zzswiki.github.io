@@ -1,6 +1,7 @@
 :root {
 	/* light */
 	--bg-color: #ffffff;
+	--bg-color2: #282928;
 	--theme-button-color: #000000;
 	--left-panel: #9F2A30;
 	--left-button-hover: #852328;
@@ -19,6 +20,7 @@ body {
 .dark-theme {
 	/* dark */
 	--bg-color: #282928;
+	--bg-color2: #ffffff;
 	--theme-button-color: #fff;
 	--left-panel: #7e1016;
 	--left-button-hover: #77090f;
@@ -127,4 +129,43 @@ body {
 	font-size: 25px;
 
 	transition: 0.5s;
+}
+
+.menu-button {
+	color: var(--bg-color);
+	background-color: var(--bg-color2);
+	padding: 5px;
+	font-size: 25px;
+	top: 5px;
+	left: 5px;
+	border-radius: 5px;
+	cursor: pointer;
+	position: fixed;
+	display: none;
+}
+
+@media only screen and (max-width: 700px) {
+	.menu-button {
+		display: block;
+	}
+
+	.left-panel {
+		position: fixed;
+		width: 100%;
+		left: -100%;
+
+		transform: 1s;
+	}
+
+	.left-panel.open {
+		left: 0;
+	}
+
+	.left-panel-button {
+		width: 100%;
+	}
+
+	.main {
+		margin-left: 0;
+	}
 }
