@@ -1,3 +1,11 @@
+:root {
+	--bg-color: #ffffff;
+}
+
+.dark-theme {
+	--bg-color: #282928;
+}
+
 .class_desc {
 	border-radius: 25px;
 	border: 2px solid black;
