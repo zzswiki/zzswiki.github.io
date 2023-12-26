@@ -15,3 +15,5 @@ $('#themeButton').on('click', function () {
 		$('#themeButton').prop('name', 'sunny-outline');
 	};
 });
+
+$('body').addClass('load');

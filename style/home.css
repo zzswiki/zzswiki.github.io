@@ -7,6 +7,8 @@
 	--left-button-hover: #852328;
 	--obiekty-bg-color: #e4e4e4;
 	--info: rgb(120, 0, 0);
+
+	--transision: 0s
 }
 
 body {
@@ -14,7 +16,11 @@ body {
 	font-family: Arial, Helvetica, sans-serif;
 	background-color: var(--bg-color);
 
-	transition: 0.5s;
+	transition: var(--transision);
+}
+
+.load {
+	--transision: 0.5s
 }
 
 .dark-theme {
