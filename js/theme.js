@@ -1,5 +1,6 @@
 if (localStorage.getItem('darkTheme') == "true"){
 	$('body').addClass('dark-theme');
+	$('#themeButton').prop('name', 'moon-outline');
 } else {
 	localStorage.setItem("darkTheme", "false");
 }
