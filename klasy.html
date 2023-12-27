@@ -5,9 +5,11 @@
 		<meta http-equiv="X-UA-Compatible" content="IE=edge">
 		<meta name="viewport" content="width=device-width, initial-scale=1.0">
 		<link rel="stylesheet" type="text/css" href="/style/main.css">
-		<link id="theme" rel="stylesheet" type="text/css" href="/style/dark/class-dark.css">
+		<link id="theme" rel="stylesheet" type="text/css" href="/style/class.css">
 		<link rel="icon" href="/media/zzs.png">
 		<title>ZZS-Wiki - Klasy</title>
+
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
 	</head>
 	<body>
 		<div id="top">
@@ -16,39 +18,51 @@
 			</div>
 		</div>
 
-		<h1 style="margin: 20px;">Klasy przechowywalni</h1>
-		<div class="class_desc">
-			<img class="icon" src="/media/class/safe.png">
-			<h1>Safe</h1>
-			<p>Klasa <b>safe</b> oznacza iż obiekt, któremu owa klasa została nadana nie ucieknie z swojej przechowywalni</p>
-		</div>
-		<div class="class_desc">
-			<img class="icon" src="/media/class/euclid.png">
-			<h1>Euclid</h1>
-			<p>Klasa <b>euclid</b> oznacza iż obiekt, któremu owa klasa została nadana ma małe prawdopodobieństwo ucieczki, a schwytanie obiektu będzie średnim wyzwaniem</p> <!--Do poprawy bo w chuj dziwnie to napisane jest-->
-		</div>
-		<div class="class_desc">
-			<img class="icon" src="/media/class/keter.png">
-			<h1>Keter</h1>
-			<p>Klasa <b>keter</b> oznacza iż obiekt, któremu owa klasa została nadana ma duże prawdopodobieństwo ucieczki, a schwytanie takiego obiektu będzie dużym wyzwaniem</p> <!--Do poprawy bo w chuj dziwnie to napisane jest-->
+		<div class="main_box_class">
+			<h1>Klasy przechowywalni</h1>
+			<hr>
+			<div class="class_list">
+				<div class="class_desc">
+					<img class="icon" src="/media/class/safe.png">
+					<h1>Safe</h1>
+					<p>Klasa <b>safe</b> oznacza iż obiekt, któremu owa klasa została nadana nie ucieknie z swojej przechowywalni</p>
+				</div>
+				<div class="class_desc">
+					<img class="icon" src="/media/class/euclid.png">
+					<h1>Euclid</h1>
+					<p>Klasa <b>euclid</b> oznacza iż obiekt, któremu owa klasa została nadana ma małe prawdopodobieństwo ucieczki, a schwytanie obiektu będzie średnim wyzwaniem</p> <!--Do poprawy bo w chuj dziwnie to napisane jest-->
+				</div>
+				<div class="class_desc">
+					<img class="icon" src="/media/class/keter.png">
+					<h1>Keter</h1>
+					<p>Klasa <b>keter</b> oznacza iż obiekt, któremu owa klasa została nadana ma duże prawdopodobieństwo ucieczki, a schwytanie takiego obiektu będzie dużym wyzwaniem</p> <!--Do poprawy bo w chuj dziwnie to napisane jest-->
+				</div>
+			</div>
 		</div>
 
-		<h1 style="margin: 20px;">Klasy zagrożeń</h1>
-		<div class="class_desc">
-			<img class="icon" src="/media/class/setter.png">
-			<h1>Setter</h1>
-			<p>Klasa <b>setter</b> oznacza iż obiekt ,któremu owa klasa została nadana nie będzie tworzył zagrożenia dla obiektów/klas znajdujących się w pobliżu</p>
+		<div class="main_box_class">
+			<h1 style="margin: 20px;">Klasy zagrożeń</h1>
+			<hr>
+			<div class="class_list">
+				<div class="class_desc">
+					<img class="icon" src="/media/class/setter.png">
+					<h1>Setter</h1>
+					<p>Klasa <b>setter</b> oznacza iż obiekt ,któremu owa klasa została nadana nie będzie tworzył zagrożenia dla obiektów/klas znajdujących się w pobliżu</p>
+				</div>
+				<div class="class_desc">
+					<img class="icon" src="/media/class/metter.png">
+					<h1>Metter</h1>
+					<p>Klasa <b>metter</b> oznacza iż obiekt, któremu owa klasa została nadana będzie tworzył psychicznie zagrożenie dla obiektów/klas znajdujących się w pobliżu</p>
+				</div>
+				<div class="class_desc">
+					<img class="icon" src="/media/class/etther.png">
+					<h1>Etther</h1>
+					<p>Klasa <b>etther</b> oznacza iż obiekt, któremu owa klasa została nadana będzie tworzył fizyczne zagrożenie dla obiektów/klas znajdujących się w pobliżu</p>
+				</div>
+			</div>
 		</div>
-		<div class="class_desc">
-			<img class="icon" src="/media/class/metter.png">
-			<h1>Metter</h1>
-			<p>Klasa <b>metter</b> oznacza iż obiekt, któremu owa klasa została nadana będzie tworzył psychicznie zagrożenie dla obiektów/klas znajdujących się w pobliżu</p>
-		</div>
-		<div class="class_desc">
-			<img class="icon" src="/media/class/etther.png">
-			<h1>Etther</h1>
-			<p>Klasa <b>etther</b> oznacza iż obiekt, któremu owa klasa została nadana będzie tworzył fizyczne zagrożenie dla obiektów/klas znajdujących się w pobliżu</p>
-		</div>
+
+		<script src="/js/klasy.js"></script>
 		<script src="/js/theme.js"></script>
 	</body>
 </html>

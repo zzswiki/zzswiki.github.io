@@ -1,14 +1,21 @@
 :root {
 	--bg-color: #ffffff;
+	--text-color: #000000;
+}
+
+body {
+	background-color: var(--bg-color) !important;
+	color: var(--text-color);
 }
 
 .dark-theme {
 	--bg-color: #282928;
+	--text-color: #ffffff;
 }
 
 .class_desc {
 	border-radius: 25px;
-	border: 2px solid black;
+	border: 2px solid var(--text-color);
 	height: fit-content;
 	margin: 20px;
 	padding: 10px;
@@ -21,4 +28,23 @@
 	height: auto;
 	float: left;
 	margin-right: 10px;
+}
+
+hr {
+	border-color: var(--text-color);
+	margin-left: 20px;
+	margin-right: 20px;
+}
+
+.main_box_class > h1 {
+	cursor: pointer;
+	margin: 20px;
+}
+
+@media only screen and (max-width: 700px) {
+	.icon {
+		width: 100%;
+		float: none;
+		margin: 0;
+	}
 }
