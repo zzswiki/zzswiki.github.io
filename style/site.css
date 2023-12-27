@@ -74,7 +74,6 @@ blockquote {
 	height: min-content;
 	padding: 1px 10px;
 	max-width: 600px;
-	/* width: 600px; */
 }
 
 .section {
@@ -94,4 +93,16 @@ blockquote {
 	width: 70px;
 	height: auto;
 	margin: 2px;
+}
+
+@media only screen and (max-width: 700px) {
+	blockquote {
+		margin-left: 5px;
+		margin-right: 5px;
+		max-width: none;
+	}
+
+	hr {
+		margin: 20px 0 20px 0;
+	}
 }
