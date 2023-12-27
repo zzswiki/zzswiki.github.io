@@ -1,5 +1,27 @@
+:root {
+	--bg-color: #ffffff;
+	--text-color: #000000;
+	--blockquote-bg-color: rgb(244,244,244);
+	--class-bg: rgb(223, 223, 223);
+	--img-bg: lightgrey;
+	--img-border: black;
+	--red: rgb(187,0,17);
+}
+
 body {
 	font-family: Arial, Helvetica, sans-serif;
+	background-color: var(--bg-color);
+	color: var(--text-color);
+}
+
+.dark-theme {
+	--bg-color: #282928;
+	--text-color: #ffffff;
+	--blockquote-bg-color: rgb(32, 32, 32);
+	--class-bg: rgb(65, 63, 63);
+	--img-bg: rgb(24, 23, 23);
+	--img-border: #ffffff;
+	--red: rgb(230, 9, 27);
 }
 
 .siteWeb {
@@ -7,17 +29,17 @@ body {
 }
 
 h1 {
-	color: rgb(187,0,17);
+	color: var(--red);
 }
 
 .img {
 	width: min-content;
 	height: min-content;
 	border-style: solid;
-	border-color: black;
+	border-color: var(--img-border);
 	border-width: 1px;
-	background-color: lightgrey;
-	box-shadow: 0px 0px 8px 8px lightgray;
+	background-color: var(--img-bg);
+	box-shadow: 0px 0px 8px 8px var(--img-bg);
 	margin: 8px;
 }
 
@@ -33,7 +55,7 @@ h1 {
 }
 
 a {
-	color: rgb(187,0,17);
+	color: var(--red);
 }
 
 hr {
@@ -47,7 +69,7 @@ blockquote {
 	outline-style: dashed;
 	outline-width: 1px;
 	outline-color: rgb(154,154,154);
-	background-color: rgb(244,244,244);
+	background-color: var(--blockquote-bg-color);
 	width: fit-content;
 	height: min-content;
 	padding: 1px 10px;
@@ -61,7 +83,7 @@ blockquote {
 }
 
 .class {
-	background-color: rgb(223, 223, 223);
+	background-color: var(--class-bg);
 	border-radius: 25px;
 	border: 2px solid black;
 	width: fit-content;
