@@ -480,4 +480,6 @@ function generuj() {
   </body>
 </html>
   `
+
+  document.getElementById("view").srcdoc = output.value;
 }
