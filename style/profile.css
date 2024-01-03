@@ -36,3 +36,12 @@ body {
 .name {
 	font-size: larger;
 }
+
+.list {
+	width: 100%;
+	float: left;
+}
+
+.list a {
+	color: rgb(230, 9, 27);
+}
