@@ -5,7 +5,7 @@
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<link rel="stylesheet" type="text/css" href="/style/main.css">
-	<link rel="stylesheet" type="text/css" href="/style/kreator.css">
+	<link rel="stylesheet" type="text/css" href="/style/kreator-new.css">
 	<link rel="icon" href="/media/zzs.png">
 	<title>ZZS-Wiki - Kreator</title>
 
@@ -18,11 +18,81 @@
 		</div>
 	</div>
 
+	<div class="panel">
+		<h1>Kreator</h1>
+		<div class="basic">
+			<div class="basic-section">
+				<h2>Informacje podstawowe</h2>
+				<table>
+					<tr>
+						<td class="table-name">ID</td>
+						<td><input type="number" id="id"></td>
+					</tr>
+					<tr>
+						<td class="table-name">Autor (nick)</td>
+						<td><input type="text" id="autor-nick"></td>
+					</tr>
+					<tr>
+						<td class="table-name">Autor (wyświetlana)</td>
+						<td><input type="text" id="autor-wyswietlana"></td>
+					</tr>
+				</table>
+			</div>
+
+			<div class="basic-section photo-section">
+				<h2>Zdjęcie obiektu</h2>
+				<span class="img-button" id="img-button">ON</span>
+				<div id="img-des">
+					<span>Opis zdjęcia</span>
+					<input type="text" id="img-des-text">
+				</div>
+			</div>
+
+			<div class="basic-section">
+				<h2>Klasy</h2>
+				<table>
+					<tr>
+						<th colspan="3">Przechowywalni</th>
+					</tr>
+					<tr>
+						<td><img src="/media/class/safe.png" class="class" id="safe-btn"></td>
+						<td><img src="/media/class/euclid.png" class="class" id="euclid-btn"></td>
+						<td><img src="/media/class/keter.png" class="class" id="keter-btn"></td>
+					</tr>
+					<tr>
+						<th colspan="3">Zagrożeń</th>
+					</tr>
+					<tr>
+						<td><img src="/media/class/setter.png" class="class" id="setter-btn"></td>
+						<td><img src="/media/class/metter.png" class="class" id="metter-btn"></td>
+						<td><img src="/media/class/etther.png" class="class" id="etther-btn"></td>
+					</tr>
+				</table>
+			</div>
+		</div>
+
+		<div class="sections">
+			<h2>Sekcje</h2>
+			<span>Typ sekcji</span>
+			<select name="typ-sekcji" id="typ-sekcji">
+				<option value="tekst">Tekst</option>
+				<option value="sfa">SFA</option>
+				<option value="przesluchanie">Przesłuchanie</option>
+				<option value="badanie">Badanie</option>
+			</select>
+			<p class="add-section-btn" id="addSection">Dodaj skecję</p>
+
+			<div class="content" id="content">
+				<!-- Content -->
+			</div>
+		</div>
+	</div>
+
 	<!-- TODO Zrobić kreator na całą stronę -->
 	<!-- TODO Pod kreatorem zrobić kod do skopiowania oraz podgląd (pole z kodem ma mieć pocje wpisania własnego kodu i go wykonać by łatwiej pisać samemu obiekt) -->
 	<!-- TODO Zrobić docs gdzie będzie opisane: jak napisać nowy obiekt, jak poprawnie wypełnić informacje, jak opublikować obiekt będąc w organizacji na GitHub oraz bez dołączania do niej, objaśnienie ważnych pojęć -->
 
 	<script src="/js/theme.js"></script>
-	<script src="/js/kreator.js"></script>
+	<script src="/js/kreator-new.js"></script>
 </body>
 </html>
