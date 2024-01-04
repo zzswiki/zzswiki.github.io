@@ -76,11 +76,6 @@ blockquote {
 	max-width: 600px;
 }
 
-.section {
-	display: inline-block;
-	width: 100%;
-}
-
 .class {
 	background-color: var(--class-bg);
 	border-radius: 25px;
