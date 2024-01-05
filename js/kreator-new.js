@@ -75,9 +75,23 @@ function setClassActive(active, name) {
 
 // ---------------- SEKCJE ----------------
 
+var tekst_content = `
+<div class="content_panel">
+	<ion-icon name="trash-outline" class="remove_section_panel"></ion-icon>
+	<span>Nazwa</span>
+	<input type="text" name="" id="">
+	<p>Zawartość</p>
+	<textarea name="" id="" rows="10"></textarea>
+</div>
+`;
+
 var tekst_section = `
 <div class="section_panel">
+	<ion-icon name="trash-outline" class="remove_section_panel"></ion-icon>
 	<h3>Tekst</h3>
+	<span class="add_text_btn">Dodaj tekst</span>
+	<div class="section_panel_content">
+	</div>
 </div>
 `;
 
@@ -103,4 +117,13 @@ $('#addSection').click(function () {
 	var section_type = $('#typ-sekcji').val();
 
 	$('#content').append(window[section_type + "_section"]);
+});
+
+$('.remove_section_panel').click(function () { 
+	$(this).parent().remove();
+});
+
+$('.add_text_btn').click(function () { 
+	console.log('nigger');
+	// $(this).parent().closest(".section_panel_content").append(tekst_content);
 });
