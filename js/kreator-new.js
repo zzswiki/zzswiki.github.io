@@ -62,7 +62,6 @@ $('#etther-btn').click(function () {
 	setClassActive(true, "etther");
 });
 
-
 function setClassActive(active, name) {
 	is_class = "is_" + name;
 	window[is_class] = active;
@@ -73,3 +72,35 @@ function setClassActive(active, name) {
 		$('#' + name + '-btn').removeClass('active');
 	}
 }
+
+// ---------------- SEKCJE ----------------
+
+var tekst_section = `
+<div class="section_panel">
+	<h3>Tekst</h3>
+</div>
+`;
+
+var sfa_section = `
+<div>
+	<p>sfa</p>
+</div>
+`;
+
+var przesluchanie_section = `
+<div>
+	<p>przesluchanie</p>
+</div>
+`;
+
+var badanie_section = `
+<div>
+	<p>badanie</p>
+</div>
+`;
+
+$('#addSection').click(function () { 
+	var section_type = $('#typ-sekcji').val();
+
+	$('#content').append(window[section_type + "_section"]);
+});

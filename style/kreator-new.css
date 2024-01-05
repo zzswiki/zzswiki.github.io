@@ -78,3 +78,9 @@ td>img {
 	width: 272px;
 	height: 154px;
 }
+
+.section_panel {
+	background-color: rgb(177, 177, 177);
+	padding: 10px;
+	border-radius: 10px;
+}
