@@ -72,6 +72,7 @@ td>img {
 	padding: 5px 10px;
 	border-radius: 5px;
 	cursor: pointer;
+	user-select: none;
 }
 
 .photo-section {
@@ -121,4 +122,11 @@ td>img {
 .content_panel textarea {
 	width: 99%;
 	resize: vertical;
+}
+
+.close_btn {
+	border: none;
+	background-color: #ffffff00;
+	position: absolute;
+	right: 0;
 }

@@ -87,7 +87,7 @@ var tekst_content = `
 
 var tekst_section = `
 <div class="section_panel">
-	<ion-icon name="trash-outline" class="remove_section_panel"></ion-icon>
+	<button onclick="remove_section($(this));" class="close_btn"><ion-icon name="trash-outline" class="remove_section_panel"></ion-icon></button>
 	<h3>Tekst</h3>
 	<span class="add_text_btn">Dodaj tekst</span>
 	<div class="section_panel_content">
@@ -119,11 +119,12 @@ $('#addSection').click(function () {
 	$('#content').append(window[section_type + "_section"]);
 });
 
-$('.remove_section_panel').click(function () { 
-	$(this).parent().remove();
-});
+function remove_section(obj) {
+	$(obj).parent().remove();
+}
 
-$('.add_text_btn').click(function () { 
-	console.log('nigger');
-	// $(this).parent().closest(".section_panel_content").append(tekst_content);
-});
+// $('.add_text_btn').click(function () { 
+// 	console.log('nigger');
+// 	$(this).parent().closest(".section_panel_content").append(tekst_content);
+// });
+
