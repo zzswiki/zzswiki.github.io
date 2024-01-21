@@ -80,35 +80,63 @@ function setClassActive(active, name) {
 
 // ---------------- SEKCJE ----------------
 
-var sfa_section = `
-<div>
-	<p>sfa</p>
-</div>
-`;
-
-var przesluchanie_section = `
-<div>
-	<p>przesluchanie</p>
-</div>
-`;
-
-var badanie_section = `
-<div>
-	<p>badanie</p>
-</div>
-`;
-
 $('#addSection').click(function () { 
 	var section_type = $('#typ-sekcji').val();
 	
 	var tekst_section = `
-		<div class="section_panel" id="section_${next_section_ID}">
-			<button onclick="remove_section(${next_section_ID});" class="close_btn"><ion-icon name="trash-outline" class="remove_section_panel"></ion-icon></button>
-			<h3>Tekst</h3>
-			<div class="section_panel_content" id="section_panel_${next_section_ID}">
-			</div>
-			<button onclick="add_text(${next_section_ID});" class="add_text_btn">Dodaj tekst</button>
+	<div class="section_panel" id="section_${next_section_ID}" type="tekst">
+		<button onclick="remove_section(${next_section_ID});" class="close_btn"><ion-icon name="trash-outline" class="remove_section_panel"></ion-icon></button>
+		<h3>Tekst</h3>
+		<div class="section_panel_content" id="section_panel_${next_section_ID}">
 		</div>
+		<button onclick="add_text(${next_section_ID});" class="add_text_btn">Dodaj tekst</button>
+	</div>
+	`;
+	
+	var sfa_section = `
+	<div class="section_panel" id="section_${next_section_ID}" type="SFA">
+		<button onclick="remove_section(${next_section_ID});" class="close_btn"><ion-icon name="trash-outline" class="remove_section_panel"></ion-icon></button>
+		<h3>SFA</h3>
+		<span>Osoba notująca</span>
+		<input type="text">
+		<div class="section_panel_content" id="section_panel_${next_section_ID}">
+		</div>
+		<button onclick="add_text(${next_section_ID});" class="add_text_btn">Dodaj tekst</button>
+	</div>
+	`;
+
+	var przesluchanie_section = `
+	<div class="section_panel" id="section_${next_section_ID}" type="przesluchanie">
+		<button onclick="remove_section(${next_section_ID});" class="close_btn"><ion-icon name="trash-outline" class="remove_section_panel"></ion-icon></button>
+		<h3>Przesłuchanie</h3>
+		<span>Przesłuchujący</span>
+		<br>
+		<input type="text">
+		<br><br>
+		<span>Przesłuchiwany</span>
+		<br>
+		<input type="text">
+		<div class="section_panel_content" id="section_panel_${next_section_ID}">
+		</div>
+		<button onclick="add_text(${next_section_ID});" class="add_text_btn">Dodaj tekst</button>
+	</div>
+	`;
+	
+	var badanie_section = `
+	<div class="section_panel" id="section_${next_section_ID}" type="badanie>
+		<button onclick="remove_section(${next_section_ID});" class="close_btn"><ion-icon name="trash-outline" class="remove_section_panel"></ion-icon></button>
+		<h3>Badanie</h3>
+		<span>Przeprowadzający badanie</span>
+		<br>
+		<input type="text">
+		<br><br>
+		<span>Przedmioty w badaniu</span>
+		<br>
+		<input type="text">
+		<div class="section_panel_content" id="section_panel_${next_section_ID}">
+		</div>
+		<button onclick="add_text(${next_section_ID});" class="add_text_btn">Dodaj tekst</button>
+	</div>
 	`;
 
 	if (section_type == "tekst"){
@@ -132,14 +160,17 @@ function remove_section(ID) {
 	delete content[ID];
 }
 
-function remove_content(ID) {
+function remove_content(ID, section_ID) {
 	$(window["content_" + ID]).remove();
+
+	const index = content[section_ID].indexOf(ID);
+	content[section_ID].splice(index, 1);
 }
 
 function add_text(ID) {
 	var tekst_content = `
 		<div class="content_panel" id="content_${next_content_ID}">
-			<button onclick="remove_content(${next_content_ID});" class="close_btn"><ion-icon name="trash-outline" class="remove_section_panel"></ion-icon></button>
+			<button onclick="remove_content(${next_content_ID}, ${ID});" class="close_btn"><ion-icon name="trash-outline" class="remove_section_panel"></ion-icon></button>
 			<span>Nazwa</span>
 			<input type="text" name="" id="">
 			<p>Zawartość</p>
