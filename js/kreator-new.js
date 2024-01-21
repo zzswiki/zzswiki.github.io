@@ -7,6 +7,11 @@ var is_setter = false;
 var is_metter = false;
 var is_etther = false;
 
+var section_ID = [];
+var next_section_ID = 0;
+var content_ID = [];
+var next_content_ID = 0;
+
 // maksymalnie 3 cyfry w ID 
 const numberInput = document.getElementById("id");
 numberInput.addEventListener("input", () => {
@@ -75,26 +80,6 @@ function setClassActive(active, name) {
 
 // ---------------- SEKCJE ----------------
 
-var tekst_content = `
-<div class="content_panel">
-	<ion-icon name="trash-outline" class="remove_section_panel"></ion-icon>
-	<span>Nazwa</span>
-	<input type="text" name="" id="">
-	<p>Zawartość</p>
-	<textarea name="" id="" rows="10"></textarea>
-</div>
-`;
-
-var tekst_section = `
-<div class="section_panel">
-	<button onclick="remove_section($(this));" class="close_btn"><ion-icon name="trash-outline" class="remove_section_panel"></ion-icon></button>
-	<h3>Tekst</h3>
-	<span class="add_text_btn">Dodaj tekst</span>
-	<div class="section_panel_content">
-	</div>
-</div>
-`;
-
 var sfa_section = `
 <div>
 	<p>sfa</p>
@@ -115,16 +100,45 @@ var badanie_section = `
 
 $('#addSection').click(function () { 
 	var section_type = $('#typ-sekcji').val();
+	
+	var tekst_section = `
+		<div class="section_panel" id="section_${next_section_ID}">
+			<button onclick="remove_section(${next_section_ID});" class="close_btn"><ion-icon name="trash-outline" class="remove_section_panel"></ion-icon></button>
+			<h3>Tekst</h3>
+			<button onclick="add_text(${next_section_ID});" class="add_text_btn">Dodaj tekst</button>
+			<div class="section_panel_content" id="section_panel_${next_section_ID}">
+			</div>
+		</div>
+	`;
 
-	$('#content').append(window[section_type + "_section"]);
+	if (section_type == "tekst"){
+		$('#content').append(tekst_section);
+	} else if (section_type == "sfa"){
+		$('#content').append(sfa_section);
+	} else if (section_type == "przesluchanie"){
+		$('#content').append(przesluchanie_section);
+	} else if (section_type == "badanie"){
+		$('#content').append(badanie_section);
+	}
+
+	next_section_ID++;
 });
 
-function remove_section(obj) {
-	$(obj).parent().remove();
+function remove_section(ID) {
+	$(window["section_" + ID]).remove();
 }
 
-// $('.add_text_btn').click(function () { 
-// 	console.log('nigger');
-// 	$(this).parent().closest(".section_panel_content").append(tekst_content);
-// });
+function add_text(ID) {
+	var tekst_content = `
+		<div class="content_panel" id="content_${next_content_ID}">
+			<ion-icon name="trash-outline" class="remove_section_panel"></ion-icon>
+			<span>Nazwa</span>
+			<input type="text" name="" id="">
+			<p>Zawartość</p>
+			<textarea name="" id="" rows="10"></textarea>
+		</div>
+	`;
 
+	$(window["section_panel_" + ID]).append(tekst_content);
+	next_content_ID++;
+}

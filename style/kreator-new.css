@@ -110,6 +110,7 @@ td>img {
 	border-radius: 5px;
 	cursor: pointer;
 	user-select: none;
+	border: 0;
 }
 
 .content_panel {
