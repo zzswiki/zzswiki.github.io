@@ -108,6 +108,7 @@ td>img {
 	background-color: greenyellow;
 	padding: 5px;
 	border-radius: 5px;
+	margin-top: 10px;
 	cursor: pointer;
 	user-select: none;
 	border: 0;

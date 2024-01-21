@@ -7,10 +7,10 @@ var is_setter = false;
 var is_metter = false;
 var is_etther = false;
 
-var section_ID = [];
 var next_section_ID = 0;
-var content_ID = [];
 var next_content_ID = 0;
+
+var content = {};
 
 // maksymalnie 3 cyfry w ID 
 const numberInput = document.getElementById("id");
@@ -105,9 +105,9 @@ $('#addSection').click(function () {
 		<div class="section_panel" id="section_${next_section_ID}">
 			<button onclick="remove_section(${next_section_ID});" class="close_btn"><ion-icon name="trash-outline" class="remove_section_panel"></ion-icon></button>
 			<h3>Tekst</h3>
-			<button onclick="add_text(${next_section_ID});" class="add_text_btn">Dodaj tekst</button>
 			<div class="section_panel_content" id="section_panel_${next_section_ID}">
 			</div>
+			<button onclick="add_text(${next_section_ID});" class="add_text_btn">Dodaj tekst</button>
 		</div>
 	`;
 
@@ -121,17 +121,25 @@ $('#addSection').click(function () {
 		$('#content').append(badanie_section);
 	}
 
+	content[next_section_ID] = [];
+
 	next_section_ID++;
 });
 
 function remove_section(ID) {
 	$(window["section_" + ID]).remove();
+
+	delete content[ID];
+}
+
+function remove_content(ID) {
+	$(window["content_" + ID]).remove();
 }
 
 function add_text(ID) {
 	var tekst_content = `
 		<div class="content_panel" id="content_${next_content_ID}">
-			<ion-icon name="trash-outline" class="remove_section_panel"></ion-icon>
+			<button onclick="remove_content(${next_content_ID});" class="close_btn"><ion-icon name="trash-outline" class="remove_section_panel"></ion-icon></button>
 			<span>Nazwa</span>
 			<input type="text" name="" id="">
 			<p>Zawartość</p>
@@ -140,5 +148,6 @@ function add_text(ID) {
 	`;
 
 	$(window["section_panel_" + ID]).append(tekst_content);
+	content[ID].push(next_content_ID);
 	next_content_ID++;
 }
