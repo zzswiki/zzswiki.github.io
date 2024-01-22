@@ -12,6 +12,8 @@ var next_content_ID = 0;
 
 var content = {};
 
+var krator_version = "2.0";
+
 // maksymalnie 3 cyfry w ID 
 const numberInput = document.getElementById("id");
 numberInput.addEventListener("input", () => {

@@ -63,7 +63,7 @@ td>img {
 
 .sections {
 	width: 100%;
-	float: left;
+	display: inline-block;
 }
 
 .add-section-btn {
@@ -131,4 +131,9 @@ td>img {
 	background-color: #ffffff00;
 	position: absolute;
 	right: 0;
+}
+
+.output {
+	width: 100%;
+	resize: vertical;
 }
