@@ -92,6 +92,8 @@
 		<h2>Output</h2>
 		<button onclick="format_output();">Generuj</button>
 		<textarea id="output" class="output" contenteditable></textarea>
+		<button onclick="update_iframe($('#output').val());">Odśwież podgląd</button>
+		<iframe src="" id="view" class="view" frameborder="0"></iframe>
 	</div>
 
 	<!-- TODO Zrobić kreator na całą stronę -->

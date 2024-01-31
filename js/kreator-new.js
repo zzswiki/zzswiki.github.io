@@ -191,26 +191,33 @@ function format_output() {
 	var object_ID = $('#id').val().padStart(3, '0');
 
 	var class_list = "";
+	var class_list_names = "";
 	var object_photo = "";
 	var img_des = $('#img-des-text').val();
 
 	if (is_safe) {
 		class_list += `<img src="/media/class/safe.png">`;
+		class_list_names += 'Safe';
 	}
 	if (is_euclid) {
 		class_list += `<img src="/media/class/euclid.png">`;
+		class_list_names += 'Euclid';
 	}
 	if (is_keter) {
 		class_list += `<img src="/media/class/keter.png">`;
+		class_list_names += 'Keter';
 	}
 	if (is_setter) {
 		class_list += `<img src="/media/class/setter.png">`;
+		class_list_names += ', Setter';
 	}
 	if (is_metter) {
 		class_list += `<img src="/media/class/metter.png">`;
+		class_list_names += ', Metter';
 	}
 	if (is_etther) {
 		class_list += `<img src="/media/class/etther.png">`;
+		class_list_names += ', Etther';
 	}
 
 	if (zdjecie_obiektu) {
@@ -220,6 +227,9 @@ function format_output() {
 			<p><strong>${img_des}</strong></p>
 		</div>`;
 	}
+
+	var autor_nick = $('#autor-nick').val();
+	var autor_wyswietlana = $('#autor-wyswietlana').val();
 
 	var output = `
 	<!DOCTYPE html>
@@ -257,99 +267,15 @@ function format_output() {
 					${class_list} 
 				</div>
 				<!-- END head -->
+
+				<br>
+				<span><strong>Identyfikator podmiotu:</strong> ZZS-${object_ID}</span>
+				<br><br>
+				<span><strong>Klasa podmiotu:</strong> ${class_list_names}</span>
+				<br><br>			
 	
-				<!-- START section 1 -->
-				<div class="section">
-					<!-- START descriptionn -->
-					<p>
-						<strong>Identyfikator podmiotu: </strong>
-						ZZS-002 <br>
-						<br>
-						<strong>Klasa podmiotu: </strong>
-						Euclid, Metter <br>
-						<br>
-						<strong>Specjalne Czynności Przechowawcze: </strong>
-						Podmiot musi być przechowywanny w celi klasy 5b. Pomieszczenie musi być szczelnie zamknięte ze ścianami symulującymi otwarty świat oraz od godzinny 17 należy włączyć dźwięki
-						symulujące jego roziców oraz 1 z 10 w telewizorze. <i>Maksymalna prętkość internetu w przechowywalni musi wynosić 1,5 Mb/s. Obowiązkowe jest cotygodniowe sprawdzenie przechowywalni pod kątem znalezienia prób przyśpieszenia internetu przez ZZS-002. (Zostało to zmienione w ZZS-002-SFA-001) </i>
-						Pomieszczenie musi być monitorowane 24/7 lecz nikt oprócz uprawnień <b>WTA</b> nie może mieć dostępu do nagrań.<br>
-						<br>
-						<strong>Opis: </strong>
-						Jest to niski obiekt mający około 1,5m. Jego waga jest nie znana, a o jego wyglądzie zewnętrznym można powiedzieć że ma lekką nadwagę oraz wygląda jak 14 latek. Jego ulubionym zajęciem jest granie / chwalenie się komputerem jego 
-						ojca, oglądanie anime oraz nękanie <a href="/obiekty/ZZS-012/">ZZS-012</a>. ZZS-002 nagrywa każdą rozmowę oraz robi screany wszystkiego by dać to do teczek, przez takie działanie wszystkie teczki zająmują mu 75% dysku z 1tb. Obiekt 
-						jest uzależniony od oglądania Anime, doszło to do takiego momentu że zaczą twierdzić iż jest anime dziewczynką <i>[ Więcej na temat tego jest na nagraniu "ZZS-002-LOG-001" ]</i>. Z niewyjaśnionych przyczyn obiekt przebywa przed komputerem 
-						w następujących godzinach: <i>[poniedziałek - czwartek { 18 - 21 }, piątek { 18 - 22 }, sobota { 11 - 12, 18 - 22 }, niedziela { 11 - 12, 18 - 21 }]</i>.
-					</p>
-					<!-- END description -->
-	
-				</div>
-				<!-- END section 1 -->
-	
-				<!-- START section 2 -->
-				<div class="section">
-					<hr>
-				
-					<!-- START audiolog -->
-					<p>
-						<strong>Audiolog z przesłuchania ZZS-002:</strong><br>
-						<br>
-						<strong>Przesłuchujący: </strong>
-						Dr ███ <br>
-						<strong>Przesłuchiwany: </strong>
-						ZZS-002 <br>
-						<strong>Sygnatura przesłuchania: </strong>
-						ZZS-002-LOG-001
-					</p>
-					<blockquote>
-						<p><strong>&lt;Początek nagrania&gt;</strong></p>
-						<p>[czasu ████████ ████████, Strefa Badawcza ██]</p>
-						<p><strong>Dr ███: </strong> Witaj 002, jak się dzisiaj czujesz?</p>
-						<p><strong>ZZS-002: </strong> Dobrze.</p>
-						<p><strong>Dr ███: </strong> Doszły mnie słuchy że zacząłeś oglądać anime. Zgadza się?</p>
-						<p><strong>ZZS-002: </strong> Tak.</p>
-						<p><strong>Dr ███: </strong> Dostaje informacje od człąków personelu że twoje zachowanie jest, jak by to powiedziec, dziwniejsze, bardziej kobiece czy jakoś tak. Możesz wytłumaczyć?</p>
-						<p><strong>ZZS-002: </strong> Moje zachowanie jest spowodowane tym że jestem kobietą, a dokładniej dziewczyną.</p>
-						<p><strong>Dr ███: </strong> Jak to dziewczyną? Wszystkie badania stwierdzają że jesteś mężczyzną.</p>
-						<p><strong>ZZS-002: </strong> Bo to są tylko badania zewnętrzne. Wewnątrz tego brzydkiego, brudnego, spasionego chłopca znajdzuje się dziewczynka, taka mała, słotka, urocza, taka jak w anime które oglądam. Kocham je. Muszę mieć ich więcej. Słyszysz? Chce ich więcej! Sprowadź mi je!</p>
-						<p><strong>Dr ███: </strong> Kogo?</p>
-						<p><strong>ZZS-002: </strong> Je. Przynieś mi je.</p>
-						<p>[ Obiekt wyciąga kartkę z wygrukowanym zdjęciem <a href="media/img2.jpg" target="_blank">[LINK]</a> ]</p>
-						<p><strong>Dr ███: </strong> Wrócimy jeszcze do tego na kolejnym spotkaniu. Jak narazie to będzie na tyle.</p>
-						<p><strong>&lt;Koniec nagrania&gt;</strong></p>
-					</blockquote>
-					<!-- END audiolog -->
-	
-				</div>
-				<!-- END section 2 -->
-	
-				<!-- START section 3 -->
-				<div class="section">
-					<hr>
-	
-					<!-- START SFA -->
-						<p>
-							<strong>Osoba notująca: </strong>
-							Dr ███ <br>
-							<strong>sygnatura SFA: </strong>
-							ZZS-002-SFA-001
-						</p>
-						<blockquote>
-							<p><strong>&lt;Początek SFA&gt;</strong></p>
-							<p>[01.08.2022 20:46, Strefa Badawcza ██]</p>
-							<p><b>T + 0:00</b> ZZS-002 zachowuje się dziwnie, o godzinie 18 zammiast usiąść przed komputerem jak zazwyczaj zaczą krążyć wokoł pokooju.</p>
-							<p><b>T + 3:24</b> Obiekt zaczą wąchać ścianę, wydaje się to dziwne zwłaszcza że chwilę wcześniej polizał swoją ulubioną figurkę anime dziewczynki.</p>
-							<p><b>T + 5:57</b> Jesteśmy gotowi na użycie protokołu "PRZEMOC", obiekt zaczą wydrapywać dziurę w ścianie.</p>
-							<p><b>T + 7:16</b> Wkroczenie drużyny GROM nic nie dało, obiekt zabił każdego kto wszedł do przechowywalni, postanowiliśmy przeczekać by zobaczyć dalsze działania obiektu.</p>
-							<p><b>T + 9:11</b> Obiekt znalazł połączenie interentowe w ścianie, po kontakcie z radą uznaliśmy że możemy pozwolić mu na dalsze działania</p>
-							<p><b>T + 10:43</b> Udało się podłączyć obiektowi komputer z połączeniem internetowym w ścianie.</p>
-							<p><b>20:58</b> Obiekt o godzinie 20:58 włączył discorda, wysłał na jakiś serwer screen, udało nam się go przechwycić <a href="media/img3.png" target="_blank">[LINK]</a></p>
-							<p><strong>&lt;Koniec SFA&gt;</strong></p>
-						</blockquote>
-					<!-- END SFA -->
-	
-				</div>
-				<!-- END section 3 -->
-	
-				<p>By <a href="/profile/PieselKlif">Dr. Klif</a></p>
+				<p>By <a href="/profile/${autor_nick}">${autor_wyswietlana}</a></p>
+				<p style="color: rgb(85, 85, 85);">In creator ${krator_version}</p>
 			</div>
 			<!-- END content -->
 			<script src="/js/theme.js"></script>
@@ -359,4 +285,13 @@ function format_output() {
 	`;
 
 	$('#output').val(output);
+	update_iframe(output);
+}
+
+function update_iframe(output) {
+  document.getElementById('view').contentWindow.location.reload(true);
+
+  setTimeout(function() {
+    document.getElementById('view').contentWindow.document.write(output);
+  }, 100);
 }
