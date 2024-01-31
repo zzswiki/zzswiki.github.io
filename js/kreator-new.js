@@ -12,7 +12,7 @@ var next_content_ID = 0;
 
 var content = {};
 
-var krator_version = "2.0";
+var crator_version = "2.0";
 
 // maksymalnie 3 cyfry w ID 
 const numberInput = document.getElementById("id");
@@ -197,15 +197,15 @@ function format_output() {
 
 	if (is_safe) {
 		class_list += `<img src="/media/class/safe.png">`;
-		class_list_names += 'Safe';
+		class_list_names = 'Safe';
 	}
 	if (is_euclid) {
 		class_list += `<img src="/media/class/euclid.png">`;
-		class_list_names += 'Euclid';
+		class_list_names = 'Euclid';
 	}
 	if (is_keter) {
 		class_list += `<img src="/media/class/keter.png">`;
-		class_list_names += 'Keter';
+		class_list_names = 'Keter';
 	}
 	if (is_setter) {
 		class_list += `<img src="/media/class/setter.png">`;
@@ -222,65 +222,65 @@ function format_output() {
 
 	if (zdjecie_obiektu) {
 		object_photo = `
-		<div class="img" style="float: right; margin: 20px;">
-			<img src="media/img1.png" style="width: 250px; height: auto;">
-			<p><strong>${img_des}</strong></p>
-		</div>`;
+			<div class="img" style="float: right; margin: 20px;">
+				<img src="media/img1.png" style="width: 250px; height: auto;">
+				<p><strong>${img_des}</strong></p>
+			</div>`;
 	}
 
 	var autor_nick = $('#autor-nick').val();
 	var autor_wyswietlana = $('#autor-wyswietlana').val();
 
 	var output = `
-	<!DOCTYPE html>
-	<html lang="pl">
-		<head>
-			<meta charset="UTF-8">
-			<meta http-equiv="X-UA-Compatible" content="IE=edge">
-			<meta name="viewport" content="width=device-width, initial-scale=1.0">
-			<link rel="stylesheet" type="text/css" href="/style/main.css">
-			<link id="theme" rel="stylesheet" type="text/css" href="/style/site.css">
-			<link rel="icon" href="/media/zzs.png">
-			<title>ZZS-Wiki - ZZS-${object_ID}</title>
-	
-			<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
-		</head>
-		<body>
-			<!-- START top bar -->
-			<div id="top">
-				<div class="topnav">
-					<a href="/">Home</a>
-				</div>
+<!DOCTYPE html>
+<html lang="pl">
+	<head>
+		<meta charset="UTF-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<link rel="stylesheet" type="text/css" href="/style/main.css">
+		<link id="theme" rel="stylesheet" type="text/css" href="/style/site.css">
+		<link rel="icon" href="/media/zzs.png">
+		<title>ZZS-Wiki - ZZS-${object_ID}</title>
+
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+	</head>
+	<body>
+		<!-- START top bar -->
+		<div id="top">
+			<div class="topnav">
+				<a href="/">Home</a>
 			</div>
-			<!-- END top bar -->
-	
-			<!-- main content -->
-			<div class="siteWeb">
+		</div>
+		<!-- END top bar -->
 
-				<!-- START object img -->
-					${object_photo}
-				<!-- END object img -->
+		<!-- main content -->
+		<div class="siteWeb">
 
-				<!-- START head -->
-				<h1>ZZS-${object_ID}</h1>
-				<div class="class">
-					${class_list} 
-				</div>
-				<!-- END head -->
+			<!-- START object img -->
+				${object_photo}
+			<!-- END object img -->
 
-				<br>
-				<span><strong>Identyfikator podmiotu:</strong> ZZS-${object_ID}</span>
-				<br><br>
-				<span><strong>Klasa podmiotu:</strong> ${class_list_names}</span>
-				<br><br>			
-	
-				<p>By <a href="/profile/${autor_nick}">${autor_wyswietlana}</a></p>
-				<p style="color: rgb(85, 85, 85);">In creator ${krator_version}</p>
+			<!-- START head -->
+			<h1>ZZS-${object_ID}</h1>
+			<div class="class">
+				${class_list} 
 			</div>
-			<!-- END content -->
-			<script src="/js/theme.js"></script>
-		</body>
-	</html>
+			<!-- END head -->
+
+			<br>
+			<span><strong>Identyfikator podmiotu:</strong> ZZS-${object_ID}</span>
+			<br><br>
+			<span><strong>Klasa podmiotu:</strong> ${class_list_names}</span>
+			<br><br>			
+
+			<p>By <a href="/profile/${autor_nick}">${autor_wyswietlana}</a></p>
+			<p class="creator-info">In creator ${crator_version}</p>
+		</div>
+		<!-- END content -->
+		<script src="/js/theme.js"></script>
+	</body>
+</html>
 	
 	`;
 
