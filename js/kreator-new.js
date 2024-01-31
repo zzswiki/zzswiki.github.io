@@ -194,24 +194,23 @@ function format_output() {
 	var object_photo = "";
 	var img_des = $('#img-des-text').val();
 
-	// TODO FIX generuje się NaN przy klasach. Znaleść i naprawić dlaczego.
 	if (is_safe) {
-		class_list =+ `<img src="/media/class/safe.png">`;
+		class_list += `<img src="/media/class/safe.png">`;
 	}
 	if (is_euclid) {
-		class_list =+ `<img src="/media/class/euclid.png">`;
+		class_list += `<img src="/media/class/euclid.png">`;
 	}
 	if (is_keter) {
-		class_list =+ `<img src="/media/class/keter.png">`;
+		class_list += `<img src="/media/class/keter.png">`;
 	}
 	if (is_setter) {
-		class_list =+ `<img src="/media/class/setter.png">`;
+		class_list += `<img src="/media/class/setter.png">`;
 	}
 	if (is_metter) {
-		class_list =+ `<img src="/media/class/metter.png">`;
+		class_list += `<img src="/media/class/metter.png">`;
 	}
 	if (is_etther) {
-		class_list =+ `<img src="/media/class/etther.png">`;
+		class_list += `<img src="/media/class/etther.png">`;
 	}
 
 	if (zdjecie_obiektu) {
