@@ -254,11 +254,6 @@ function format_output() {
 	var autor_nick = $('#autor-nick').val();
 	var autor_wyswietlana = $('#autor-wyswietlana').val();
 
-	// for (let index = 0; index < content.length; index++) {
-	// 	const element = content[index];
-	// 	console.log(element);
-	// }
-
 	console.log(content[1]);
 
 	var output = `
