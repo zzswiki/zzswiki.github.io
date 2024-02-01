@@ -10,7 +10,7 @@ var is_etther = false;
 var next_section_ID = 0;
 var next_content_ID = 0;
 
-var content = {};
+var content = [];
 
 var crator_version = "2.0";
 
@@ -86,7 +86,7 @@ $('#addSection').click(function () {
 	var section_type = $('#typ-sekcji').val();
 	
 	var tekst_section = `
-	<div class="section_panel" id="section_${next_section_ID}" type="tekst">
+	<div class="section_panel" id="section_${next_section_ID}">
 		<button onclick="remove_section(${next_section_ID});" class="close_btn"><ion-icon name="trash-outline" class="remove_section_panel"></ion-icon></button>
 		<h3>Tekst</h3>
 		<div class="section_panel_content" id="section_panel_${next_section_ID}">
@@ -96,7 +96,7 @@ $('#addSection').click(function () {
 	`;
 	
 	var sfa_section = `
-	<div class="section_panel" id="section_${next_section_ID}" type="SFA">
+	<div class="section_panel" id="section_${next_section_ID}">
 		<button onclick="remove_section(${next_section_ID});" class="close_btn"><ion-icon name="trash-outline" class="remove_section_panel"></ion-icon></button>
 		<h3>SFA</h3>
 		<span>Osoba notująca</span>
@@ -108,7 +108,7 @@ $('#addSection').click(function () {
 	`;
 
 	var przesluchanie_section = `
-	<div class="section_panel" id="section_${next_section_ID}" type="przesluchanie">
+	<div class="section_panel" id="section_${next_section_ID}">
 		<button onclick="remove_section(${next_section_ID});" class="close_btn"><ion-icon name="trash-outline" class="remove_section_panel"></ion-icon></button>
 		<h3>Przesłuchanie</h3>
 		<span>Przesłuchujący</span>
@@ -125,7 +125,7 @@ $('#addSection').click(function () {
 	`;
 	
 	var badanie_section = `
-	<div class="section_panel" id="section_${next_section_ID}" type="badanie>
+	<div class="section_panel" id="section_${next_section_ID}">
 		<button onclick="remove_section(${next_section_ID});" class="close_btn"><ion-icon name="trash-outline" class="remove_section_panel"></ion-icon></button>
 		<h3>Badanie</h3>
 		<span>Przeprowadzający badanie</span>
@@ -151,7 +151,13 @@ $('#addSection').click(function () {
 		$('#content').append(badanie_section);
 	}
 
-	content[next_section_ID] = [];
+	var section_push = {
+		'id' : next_section_ID,
+		'type' : section_type,
+		'section_content' : []
+	};
+
+	content.push(section_push);
 
 	next_section_ID++;
 });
@@ -159,14 +165,24 @@ $('#addSection').click(function () {
 function remove_section(ID) {
 	$(window["section_" + ID]).remove();
 
-	delete content[ID];
+	for (let index = 0; index < content.length; index++) {
+		const element = content[index];
+		if (content[index]['id'] == ID) {
+			content.splice(index, 1);
+		}
+	}
 }
 
 function remove_content(ID, section_ID) {
+	for (let index = 0; index < content.length; index++) {
+		const element = content[index];
+		if (content[index]['id'] == section_ID) {
+			const content_index = content[index]['section_content'].indexOf(ID);
+			content[index]['section_content'].splice(content_index, 1);
+		}
+	}
+	
 	$(window["content_" + ID]).remove();
-
-	const index = content[section_ID].indexOf(ID);
-	content[section_ID].splice(index, 1);
 }
 
 function add_text(ID) {
@@ -181,7 +197,13 @@ function add_text(ID) {
 	`;
 
 	$(window["section_panel_" + ID]).append(tekst_content);
-	content[ID].push(next_content_ID);
+
+	for (let index = 0; index < content.length; index++) {
+		const element = content[index];
+		if (content[index]['id'] == ID) {
+			content[index]['section_content'].push(next_content_ID);
+		}
+	}
 	next_content_ID++;
 }
 
@@ -194,6 +216,7 @@ function format_output() {
 	var class_list_names = "";
 	var object_photo = "";
 	var img_des = $('#img-des-text').val();
+	var main_content = "";
 
 	if (is_safe) {
 		class_list += `<img src="/media/class/safe.png">`;
@@ -230,6 +253,13 @@ function format_output() {
 
 	var autor_nick = $('#autor-nick').val();
 	var autor_wyswietlana = $('#autor-wyswietlana').val();
+
+	// for (let index = 0; index < content.length; index++) {
+	// 	const element = content[index];
+	// 	console.log(element);
+	// }
+
+	console.log(content[1]);
 
 	var output = `
 <!DOCTYPE html>
