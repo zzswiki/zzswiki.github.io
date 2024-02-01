@@ -1,5 +1,25 @@
+:root {
+	--true: rgb(7, 184, 7);
+	--false: rgb(192, 7, 7);
+
+	--text: black;
+	--reverse-text: rgb(238, 238, 238);
+
+	--shadow: rgba(0, 0, 0, 0.2);
+
+	--panel-bg: #D9D9D9;
+	
+	--calss-bg: #ffffff;
+	--selected: aqua;
+	--hovered: aquamarine;
+}
+
+body {
+	color: var(--text);
+}
+
 .panel {
-	background-color: #D9D9D9;
+	background-color: var(--panel-bg);
 	margin: 20px;
 	padding: 15px;
 	border-radius: 10px;
@@ -15,7 +35,8 @@
 }
 
 .img-button {
-	background-color: green;
+	background-color: var(--true);
+	color: var(--text);
 	padding: 5px 10px;
 	border-radius: 5px;
 	display: block;
@@ -31,7 +52,8 @@
 }
 
 .img-button.off {
-	background-color: red;
+	background-color: var(--false);
+	color: var(--reverse-text);
 }
 
 td>img {
@@ -39,7 +61,7 @@ td>img {
 }
 
 .class {
-	background-color: #ffffff;
+	background-color: var(--calss-bg);
 	padding: 2px;
 	border-radius: 5px;
 	cursor: pointer;
@@ -48,11 +70,13 @@ td>img {
 }
 
 .class:hover {
-	background-color: aquamarine;
+	background-color: var(--hovered);
+	transform: scale(1.1);
+	box-shadow: 0 0 8px 0 var(--shadow);
 }
 
 .class.active {
-	background-color: aqua;
+	background-color: var(--selected);
 }
 
 .basic-section {
@@ -144,4 +168,22 @@ td>img {
 	height: 500px;
 	border-radius: 10px;
 	border: 3px solid black;
+}
+
+.gen_button {
+	background-color: aqua;
+	border: 0;
+	margin-bottom: 10px;
+	padding: 5px 10px;
+	border-radius: 5px;
+	cursor: pointer;
+}
+
+.ref_button {
+	margin: 20px 0 10px 0;
+	background-color: #ccb846;
+	border: 0;
+	padding: 5px 10px;
+	border-radius: 5px;
+	cursor: pointer;
 }
