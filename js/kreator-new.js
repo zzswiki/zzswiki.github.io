@@ -167,7 +167,7 @@ function remove_section(ID) {
 
 	for (let index = 0; index < content.length; index++) {
 		const element = content[index];
-		if (content[index]['id'] == ID) {
+		if (element['id'] == ID) {
 			content.splice(index, 1);
 		}
 	}
@@ -176,9 +176,9 @@ function remove_section(ID) {
 function remove_content(ID, section_ID) {
 	for (let index = 0; index < content.length; index++) {
 		const element = content[index];
-		if (content[index]['id'] == section_ID) {
+		if (element['id'] == section_ID) {
 			const content_index = content[index]['section_content'].indexOf(ID);
-			content[index]['section_content'].splice(content_index, 1);
+			element['section_content'].splice(content_index, 1);
 		}
 	}
 	
@@ -201,7 +201,7 @@ function add_text(ID) {
 	for (let index = 0; index < content.length; index++) {
 		const element = content[index];
 		if (content[index]['id'] == ID) {
-			content[index]['section_content'].push(next_content_ID);
+			element['section_content'].push(next_content_ID);
 		}
 	}
 	next_content_ID++;
