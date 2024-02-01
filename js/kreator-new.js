@@ -100,7 +100,7 @@ $('#addSection').click(function () {
 		<button onclick="remove_section(${next_section_ID});" class="close_btn"><ion-icon name="trash-outline" class="remove_section_panel"></ion-icon></button>
 		<h3>SFA</h3>
 		<span>Osoba notująca</span>
-		<input type="text">
+		<input type="text" id="sfa_${next_section_ID}">
 		<div class="section_panel_content" id="section_panel_${next_section_ID}">
 		</div>
 		<button onclick="add_text(${next_section_ID});" class="add_text_btn">Dodaj tekst</button>
@@ -113,11 +113,11 @@ $('#addSection').click(function () {
 		<h3>Przesłuchanie</h3>
 		<span>Przesłuchujący</span>
 		<br>
-		<input type="text">
+		<input type="text" id="przesluchujacy_${next_section_ID}">
 		<br><br>
 		<span>Przesłuchiwany</span>
 		<br>
-		<input type="text">
+		<input type="text" id="przesluchiwany_${next_section_ID}">
 		<div class="section_panel_content" id="section_panel_${next_section_ID}">
 		</div>
 		<button onclick="add_text(${next_section_ID});" class="add_text_btn">Dodaj tekst</button>
@@ -130,11 +130,11 @@ $('#addSection').click(function () {
 		<h3>Badanie</h3>
 		<span>Przeprowadzający badanie</span>
 		<br>
-		<input type="text">
+		<input type="text" id="badanie_osoba_${next_section_ID}">
 		<br><br>
 		<span>Przedmioty w badaniu</span>
 		<br>
-		<input type="text">
+		<input type="text" id="badanie_przedmioty_${next_section_ID}">
 		<div class="section_panel_content" id="section_panel_${next_section_ID}">
 		</div>
 		<button onclick="add_text(${next_section_ID});" class="add_text_btn">Dodaj tekst</button>
@@ -190,9 +190,9 @@ function add_text(ID) {
 		<div class="content_panel" id="content_${next_content_ID}">
 			<button onclick="remove_content(${next_content_ID}, ${ID});" class="close_btn"><ion-icon name="trash-outline" class="remove_section_panel"></ion-icon></button>
 			<span>Nazwa</span>
-			<input type="text" name="" id="">
+			<input type="text" name="" id="name_${next_content_ID}">
 			<p>Zawartość</p>
-			<textarea name="" id="" rows="10"></textarea>
+			<textarea name="" id="text_content_${next_content_ID}" rows="10"></textarea>
 		</div>
 	`;
 
@@ -217,6 +217,9 @@ function format_output() {
 	var object_photo = "";
 	var img_des = $('#img-des-text').val();
 	var main_content = "";
+	var sfa_num = 1;
+	var badanie_num = 1;
+	var przesluchanie_num = 1;
 
 	if (is_safe) {
 		class_list += `<img src="/media/class/safe.png">`;
@@ -254,7 +257,128 @@ function format_output() {
 	var autor_nick = $('#autor-nick').val();
 	var autor_wyswietlana = $('#autor-wyswietlana').val();
 
-	console.log(content[1]);
+	for (let index = 0; index < content.length; index++) {
+		const element = content[index];
+		let text_content = "";
+
+		if (element['type'] == 'tekst') {
+			for (let index2 = 0; index2 < element['section_content'].length; index2++) {
+				const content_id_list = element['section_content'][index2];
+				const content_name = $(window["name_" + content_id_list]).val();
+				const content_content = $(window["text_content_" + content_id_list]).val();;
+	
+				text_content += `
+				<p><b>${content_name}</b>${content_content}</p>
+				`;
+			}
+	
+			main_content += `
+			<!-- START section -->
+				<div class="section">
+					${text_content}
+				</div>
+				<hr>
+			<!-- END section -->
+			`;
+		} else if (element['type'] == 'sfa'){
+			for (let index2 = 0; index2 < element['section_content'].length; index2++) {
+				const content_id_list = element['section_content'][index2];
+				const content_name = $(window["name_" + content_id_list]).val();
+				const content_content = $(window["text_content_" + content_id_list]).val();;
+				
+				text_content += `
+				<p><b>${content_name}</b>${content_content}</p>
+				`;
+			}
+
+			var sfa_num_t = sfa_num.toString().padStart(3, '0');
+			const sfa_noted = $(window["sfa_" + element['id']]).val();
+
+			main_content += `
+			<!-- START section -->
+				<div class="section">
+					<p><b>Osoba notująca:</b> ${sfa_noted}</p>
+					<p><b>sygnatura SFA:</b> ZZS-${object_ID}-SFA-${sfa_num_t}</p>
+					<blockquote>
+						<p><b>&lt;Początek SFA&gt;</b></p>
+						${text_content}
+						<p><b>&lt;Koniec SFA&gt;</b></p>
+					</blockquote>
+				</div>
+				<hr>
+			<!-- END section -->
+			`;
+
+			sfa_num++;
+
+		} else if (element['type'] == 'badanie'){
+			for (let index2 = 0; index2 < element['section_content'].length; index2++) {
+				const content_id_list = element['section_content'][index2];
+				const content_name = $(window["name_" + content_id_list]).val();
+				const content_content = $(window["text_content_" + content_id_list]).val();;
+				
+				text_content += `
+				<p><b>${content_name}</b>${content_content}</p>
+				`;
+			}
+
+			var badanie_num_t = badanie_num.toString().padStart(3, '0');
+			const badanie_osoba = $(window["badanie_osoba_" + element['id']]).val();
+			const badanie_przedmioty = $(window["badanie_przedmioty_" + element['id']]).val();
+
+			main_content += `
+			<!-- START section -->
+				<div class="section">
+					<p><b>Badanie przeprowadzone na ZZS-${object_ID}</b></p>
+					<p><b>Przeprowadzający badanie:</b> ${badanie_osoba}</p>
+					<p><b>Obiekt:</b> ${badanie_przedmioty}</p>
+					<p><b>Sygnatura badania:</b> ZZS-${object_ID}-LOG-B-${badanie_num_t}</p>
+					<blockquote>
+						${text_content}
+					</blockquote>
+				</div>
+				<hr>
+			<!-- END section -->
+			`;
+
+			badanie_num++;
+
+		} else if (element['type'] == 'przesluchanie'){
+			for (let index2 = 0; index2 < element['section_content'].length; index2++) {
+				const content_id_list = element['section_content'][index2];
+				const content_name = $(window["name_" + content_id_list]).val();
+				const content_content = $(window["text_content_" + content_id_list]).val();;
+				
+				text_content += `
+				<p><b>${content_name}</b>${content_content}</p>
+				`;
+			}
+
+			var przesluchanie_num_t = przesluchanie_num.toString().padStart(3, '0');
+			const przesluchujacy = $(window["przesluchujacy_" + element['id']]).val();
+			const przesluchiwany = $(window["przesluchiwany_" + element['id']]).val();
+
+			main_content += `
+			<!-- START section -->
+				<div class="section">
+					<p><b>Audiolog z przesłuchania ZZS-${object_ID}:</b></p>
+					<p><b>Przesłuchujący:</b> ${przesluchujacy}</p>
+					<p><b>Przesłuchiwany:</b> ${przesluchiwany}</p>
+					<p><b>Sygnatura badania:</b> ZZS-${object_ID}-LOG-${przesluchanie_num_t}</p>
+					<blockquote>
+						<p><b>&lt;Początek nagrania&gt;</b></p>
+						${text_content}
+						<p><b>&lt;Koniec nagrania&gt;</b></p>
+					</blockquote>
+				</div>
+				<hr>
+			<!-- END section -->
+			`;
+
+			przesluchanie_num++;
+
+		}
+	}
 
 	var output = `
 <!DOCTYPE html>
@@ -298,7 +422,7 @@ function format_output() {
 			<br><br>
 			<span><strong>Klasa podmiotu:</strong> ${class_list_names}</span>
 			<br><br>			
-
+			${main_content}
 			<p>By <a href="/profile/${autor_nick}">${autor_wyswietlana}</a></p>
 			<p class="creator-info">In creator ${crator_version}</p>
 		</div>
