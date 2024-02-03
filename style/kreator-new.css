@@ -29,6 +29,32 @@ body {
 	background-color: var(--web-bg);
 }
 
+.dark-theme {
+	--panel-bg: #101716;
+	--web-bg: #040B0A;
+
+	--reverse-text: rgb(238, 238, 238);
+	--text: rgb(238, 238, 238);
+
+	--true: rgb(16, 128, 16);
+	--false: rgb(170, 27, 27);
+
+	--input: rgb(107, 103, 103); 
+
+	--border: rgb(167, 163, 163);
+	
+	--panel: #2b2b31;
+
+	--shadow: rgba(0, 0, 0, 0.767);
+
+	--calss-bg: #757070;
+	--selected: #322163;
+	--hovered: #661B79;
+
+	--button: #328a7f;
+	--hovered-button: #3EB6A8;
+}
+
 .panel {
 	background-color: var(--panel-bg);
 	margin: 20px;
@@ -156,6 +182,7 @@ td>img {
 	cursor: pointer;
 	user-select: none;
 	border: 0;
+	color: var(--text);
 
 	transition: 0.5s;
 }
@@ -205,6 +232,7 @@ td>img {
 	padding: 5px 10px;
 	border-radius: 5px;
 	cursor: pointer;
+	color: var(--text);
 
 	transition: 0.5s;
 }
