@@ -189,9 +189,9 @@ function add_text(ID) {
 	var tekst_content = `
 		<div class="content_panel" id="content_${next_content_ID}">
 			<button onclick="remove_content(${next_content_ID}, ${ID});" class="close_btn"><ion-icon name="trash-outline" class="remove_section_panel"></ion-icon></button>
-			<span>Nazwa</span>
+			<span>Nazwa: </span>
 			<input type="text" name="" id="name_${next_content_ID}">
-			<p>Zawartość</p>
+			<p>Zawartość:</p>
 			<textarea name="" id="text_content_${next_content_ID}" rows="10"></textarea>
 		</div>
 	`;

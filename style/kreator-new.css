@@ -2,20 +2,31 @@
 	--true: rgb(7, 184, 7);
 	--false: rgb(192, 7, 7);
 
-	--text: black;
+	--text: #061210;
 	--reverse-text: rgb(238, 238, 238);
 
 	--shadow: rgba(0, 0, 0, 0.2);
 
-	--panel-bg: #D9D9D9;
+	--panel-bg: #e7eeec;
+	--web-bg: #F3FBF9;
 	
 	--calss-bg: #ffffff;
-	--selected: aqua;
-	--hovered: aquamarine;
+	--selected: #AD9DDE;
+	--hovered: #D187E4;
+
+	--button: #47C0B2;
+	--hovered-button: #4fd1c2;
+
+	--border: black;
+
+	--panel: #dedef1;
+
+	--input: rgb(245, 242, 242); 
 }
 
 body {
 	color: var(--text);
+	background-color: var(--web-bg);
 }
 
 .panel {
@@ -91,12 +102,20 @@ td>img {
 }
 
 .add-section-btn {
-	background-color: #ccb846;
 	width: fit-content;
+	background-color: var(--button);
+	border: 0;
 	padding: 5px 10px;
 	border-radius: 5px;
 	cursor: pointer;
-	user-select: none;
+
+	transition: 0.5s;
+}
+
+.add-section-btn:hover {
+	transform: scale(1.05);
+	box-shadow: 0 0 8px 0 var(--shadow);
+	background-color: var(--hovered-button);
 }
 
 .photo-section {
@@ -105,15 +124,16 @@ td>img {
 }
 
 .section_panel {
-	background-color: rgb(177, 177, 177);
+	background-color: var(--panel);
 	padding: 10px;
 	border-radius: 10px;
 	margin-bottom: 10px;
+	border: var(--border) 2px solid;
 }
 
 .remove_section_panel {
-	background-color: red;
-	color: white;
+	background-color: var(--false);
+	color: var(--reverse-text);
 	padding: 5px;
 	font-size: 25px;
 	border-radius: 50%;
@@ -129,20 +149,28 @@ td>img {
 }
 
 .add_text_btn {
-	background-color: greenyellow;
+	background-color: var(--hovered);
 	padding: 5px;
 	border-radius: 5px;
 	margin-top: 10px;
 	cursor: pointer;
 	user-select: none;
 	border: 0;
+
+	transition: 0.5s;
+}
+
+.add_text_btn:hover {
+	transform: scale(1.05);
+	box-shadow: 0 0 3px 0 var(--shadow);
 }
 
 .content_panel {
-	background-color: #D9D9D9;
+	background-color: var(--panel-bg);
 	margin-top: 15px;
 	border-radius: 15px;
 	padding: 10px;
+	border: var(--border) 1px solid;
 }
 
 .content_panel textarea {
@@ -167,23 +195,31 @@ td>img {
 	width: 100%;
 	height: 500px;
 	border-radius: 10px;
-	border: 3px solid black;
+	border: 3px solid var(--border);
 }
 
-.gen_button {
-	background-color: aqua;
-	border: 0;
-	margin-bottom: 10px;
-	padding: 5px 10px;
-	border-radius: 5px;
-	cursor: pointer;
-}
-
-.ref_button {
+.button {
 	margin: 20px 0 10px 0;
-	background-color: #ccb846;
+	background-color: var(--button);
 	border: 0;
 	padding: 5px 10px;
 	border-radius: 5px;
 	cursor: pointer;
+
+	transition: 0.5s;
+}
+
+.button:hover {
+	transform: scale(1.05);
+	box-shadow: 0 0 8px 0 var(--shadow);
+	background-color: var(--hovered-button);
+}
+
+input, textarea, select {
+	border: var(--border) 1px solid;
+	border-radius: 5px;
+	background-color: var(--input);
+	color: var(--text);
+	padding: 3px 5px;
+	font-family: Arial, Helvetica, sans-serif;
 }
