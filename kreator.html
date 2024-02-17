@@ -96,7 +96,78 @@
 		<iframe src="" id="view" class="view" frameborder="0"></iframe>
 	</div>
 
-	<!-- TODO Zrobić docs gdzie będzie opisane: jak napisać nowy obiekt, jak poprawnie wypełnić informacje, jak opublikować obiekt będąc w organizacji na GitHub oraz bez dołączania do niej, objaśnienie ważnych pojęć -->
+	<div class="panel docs">
+		<h1>Jak napisać nowy obiekt</h1>
+		<div class="h2">
+			<hr>
+			<h2>Podstawy</h2>
+			<div class="h3">
+				<h3>Czym jest kreator?</h3>
+				<p>Kreator to narzędzie, które służy do łatwego tworzenia nowych obiektów bez umiejętności tworzenia stron internetowych oraz szybkiego pisania bez obaw o zepsucie strony.</p>
+				<p>Kreator automatycznie numeruje takie rzeczy jak SFA lub badania.</p>
+				<hr>
+				<h3>Podstawowe pojęcia</h3>
+				<p>Pojęcia klas można znaleźć <a href="/klasy">tutaj</a>.</p>
+				<p>Inne pojęcia:</p>
+				<ul>
+					<li><b>SFA</b> - Save From Action - Jest to zapis, w którym jest zapisane każde działanie oraz decyzja podczas danej sytuacji. Czas, który się tam wykorzystuje, zapisuje się jako <i>T + 0:00</i>, który oznacza ile czasu upłynęło od rozpoczęcia sytuacji.</li>
+					<li><b>TBT</b> - The Big Table - Najważniejsza rada w ZZS. To ona podejmuje wszystkie ważne decyzje oraz funduje ZZS.</li>
+				</ul>
+			</div>
+		</div>
+		<div class="h2">
+			<hr>
+			<h2>Jak napisać?</h2>
+			<p>By napisać nowy obiekt wykonaj instrukcję poniżej.</p>
+			<div class="h3">
+				<h3>Pomysł</h3>
+				<p>Zacznij od pomysłu, w którym będzie cały plan na nowy obiekt. Pamiętaj, żeby zapoznać się z <b>Podstawowe pojęcia</b> przed rozpoczęciem prac.</p>
+				<p>Twój pomysł musi być odpowiedni, by nie urazić nikogo lub zrobić to dla żartu z osobą, która też to uzna za śmieszny żart.</p>
+				<hr>
+				<h3>Podstawowe informacje</h3>
+				<p>Na stronie kreatora uzupełnij informacje:</p>
+				<ul>
+					<li><b>ID</b> - Wybierz ID, które nie zostało jeszcze użyte.</li>
+					<li><b>Autor (nick)</b> - Jeżeli masz stronę swojego profilu to wstaw tutaj swój nick. Jest to nazwa, którą jest nazwany plik twojego profilu np. <a href="https://zzswiki.github.io/profile/PieselKlif">https://zzswiki.github.io/profile/PieselKlif</a> w tym przypadku nick to PieselKlif. Jak nie masz swojego profilu a nie masz umiejętności by zrobić go samemu poproś autora strony o przygotowanie takiego profilu podając mu informacje do podania.</li>
+					<li><b>Autor (wyświetlana)</b> - Jest to nazwa, która pojawia się na samym dole artykułu obiektu.</li>
+					<li><b>Zdjęcie obiektu</b> - Jeżeli chcesz dodać zdjęcie obiektu to ustaw tą opcję na włączoną i dodaj opis zdjęcia. Jeżeli nie to wyłącz.</li>
+					<li><b>Klasy</b> - Ustaw klasy zgodnie z twoim obiektem.</li>
+				</ul>
+				<hr>
+				<h3>Pisanie</h3>
+				<p>Teraz dodamy więcej tekstu do artykułu. W zakładce <b>Sekcje</b> możesz wybrać typ sekcji oraz go dodać.</p>
+				<p>Po dodaniu sekcji masz opcję dodania do niego tekstu. Tekst to jest jedna linijka gdzie <i>Nazwa</i> będzie pogrubiona. Więc jeżeli chcesz normalny tekst napisać to zostaw to puste. <i><b>Pamiętaj, że jeżeli piszesz wykorzystując pogrubienie Nazwy to dodawaj : np. Opis:</b></i></p>
+				<p>Jeżeli nie wiesz jak wygląda sekcja to możesz je zobaczyć w innych artykułach. <i>(Sekcja <b>Tekst</b> jest najbardziej podstawowa i nie posiada żadnych efektów oprócz pogrubionej nazwy)</i></p>
+				<p>Ważne jest, aby zamiast znaków &lt; oraz &gt; używać kodu &amp;lt; oraz &amp;gt;, ponieważ strona traktuje to jako kawałek jej kodu.</p>
+				<ul>
+					<li><b>&lt;</b> - &amp;lt;</li>
+					<li><b>&gt;</b> - &amp;gt;</li>
+				</ul>
+				<hr>
+				<h3>Generowanie</h3>
+				<p>Po zakończeniu pisania kliknij <b>Generuj</b>. Pojawi się kod strony oraz podgląd jak będzie to wyglądać. Możesz jeszcze wprowadzić zmiany w sekcjach oraz je zatwierdzać klikając <b>Generuj</b></p>
+				<p>Jeżeli coś ci się nie podoba lub chcesz zmienić a umiesz pisać w HTML to możesz zmienić kod w output, a żeby potem zobaczyć zmiany kliknij <b>Odśwież podgląd</b></p>
+				<hr>
+				<h3>Zapisanie</h3>
+				<p>Zrób folder z ID twojego obiektu np. ZZS-000 i w nim utwórz plik o nazwie index.html w którym wklej kod strony twojego obiektu.</p>
+				<p>Jeżeli masz zdjęcie obiekt to w folderze obiektu zrób folder o nazwie <i>media</i> i w nim daj zdjęcie zmieniając mu nazwę na img1.png</p>
+			</div>
+		</div>
+		<div class="h2">
+			<hr>
+			<h2>Publikacja</h2>
+			<p>Jest kilka opcji opublikowania artykułu:</p>
+			<ol>
+				<li>Jeżeli jesteś członkiem organizacji na GitHub
+					<ul>
+						<li>Za pomocą GitHub Desktop pobierz repozytorium z stroną i w plikach przenieś swój folder z obiektem do folderu <b>obiekty</b>. Pamiętaj by w pliku głównym <i>index.html</i> gdzie jest strona główna strony, dodaj swój obiekt w odpowiednim miejscu (wzoruj się innymi obiektami) z nazwą.</li>
+						<li>Za pomocą strony GitHub przeenieś swój folder do folderu <b>obiekty</b> oraz dodaj w pliku głównym <i>index.html</i> swój obiekt</li>
+					</ul>
+				<li>Jeżeli masz konto na github - sklonuj repozytorium strony do siebie dodając zmiany jak w punkcie 1. Jeżeli administrator zaakceptuje zmiany to twój obiekt pojawi się na stronie</li>
+				<li>Discord - możesz napisać do autora strony <b><i>PieselKlif</i></b> na Discord wysyłając mu spakowane pliki twojego obiektu dodając w wiadomości nazwę obieektu.</li>
+			</ol>
+		</div>
+	</div>
 
 	<script src="/js/theme.js"></script>
 	<script src="/js/kreator-new.js"></script>
