@@ -7,8 +7,8 @@
 
 	--shadow: rgba(0, 0, 0, 0.2);
 
-	--panel-bg: #e7eeec;
-	--web-bg: #F3FBF9;
+	--panel-bg: #e4e4e4;
+	--web-bg: #fff;
 	
 	--calss-bg: #ffffff;
 	--selected: #AD9DDE;
@@ -19,7 +19,7 @@
 
 	--border: black;
 
-	--panel: #dedef1;
+	--panel: rgb(211, 207, 207);
 
 	--input: rgb(245, 242, 242); 
 }
@@ -30,8 +30,8 @@ body {
 }
 
 .dark-theme {
-	--panel-bg: #101716;
-	--web-bg: #040B0A;
+	--panel-bg: #181818;
+	--web-bg: #202020;
 
 	--reverse-text: rgb(238, 238, 238);
 	--text: rgb(238, 238, 238);
@@ -39,20 +39,20 @@ body {
 	--true: rgb(16, 128, 16);
 	--false: rgb(170, 27, 27);
 
-	--input: rgb(107, 103, 103); 
+	--input: rgb(85, 81, 81); 
 
 	--border: rgb(167, 163, 163);
 	
-	--panel: #2b2b31;
+	--panel: #202020;
 
-	--shadow: rgba(0, 0, 0, 0.767);
+	--shadow: rgba(0, 0, 0, 0.727);
 
-	--calss-bg: #757070;
+	--calss-bg: #646060;
 	--selected: #322163;
 	--hovered: #661B79;
 
-	--button: #328a7f;
-	--hovered-button: #3EB6A8;
+	--button: #3029b4;
+	--hovered-button: #3A31D8;
 }
 
 .panel {
