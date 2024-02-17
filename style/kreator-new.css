@@ -93,6 +93,16 @@ body {
 	color: var(--reverse-text);
 }
 
+.img-button.off:hover {
+	transform: scale(1.05);
+	box-shadow: 0 0 8px 0 var(--false);
+}
+
+.img-button:hover {
+	transform: scale(1.05);
+	box-shadow: 0 0 8px 0 var(--true);
+}
+
 td>img {
 	height: 50px;
 }
