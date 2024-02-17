@@ -1,7 +1,20 @@
+:root {
+	--bg-color: #fff;
+	--text-color: #000;
+}
+
 body {
 	margin: 0;
 	font-family: Arial, Helvetica, sans-serif;
 	text-align: center;
+
+	background-color: var(--bg-color);
+	color: var(--text-color);
+}
+
+.dark-theme {
+	--bg-color: #282928;
+	--text-color: #fff;
 }
 
 .link {

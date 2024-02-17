@@ -1,0 +1,177 @@
+:root {
+	/* light */
+	--bg-color: #ffffff;
+	--bg-color2: #282928;
+	--theme-button-color: #000000;
+	--left-panel: #9F2A30;
+	--left-button-hover: #852328;
+	--obiekty-bg-color: #e4e4e4;
+	--info: rgb(120, 0, 0);
+
+	--transision: 0s
+}
+
+body {
+	margin: 0;
+	font-family: Arial, Helvetica, sans-serif;
+	background-color: var(--bg-color);
+
+	transition: var(--transision);
+}
+
+.load {
+	--transision: 0.5s
+}
+
+.dark-theme {
+	/* dark */
+	--bg-color: #282928;
+	--bg-color2: #ffffff;
+	--theme-button-color: #fff;
+	--left-panel: #7e1016;
+	--left-button-hover: #77090f;
+	--obiekty-bg-color: #a0a0a0;
+	--info: rgb(172, 0, 0);
+}
+
+.left-panel {
+	background-color: var(--left-panel);
+	width: 250px;
+	height: 100vh;
+	text-align: center;
+
+	float: left;
+	position: fixed;
+	top: 0;
+
+	transition: 0.5s;
+}
+
+.left-panel img {
+	width: 200px;
+}
+
+.left-panel h1 {
+	margin-top: -25px;
+	font-size: 50px;
+	user-select: none;
+}
+
+.left-panel-button {
+	background-color: rgba(0, 0, 0, 0);
+	text-decoration: inherit;
+	color: white;
+	width: 250px;
+	padding: 10px 0;
+	display: block;
+	font-size: 20px;
+	user-select: none;
+
+	transition: 0.5s;
+}
+
+.left-panel-button:hover {
+	background-color: var(--left-button-hover);
+}
+
+.left-panel-button.active {
+	background-color: var(--bg-color);;
+	color: var(--theme-button-color);
+	font-weight: bold;
+}
+
+.main {
+	margin-left: 250px;
+	margin-top: 25px;
+}
+
+.info {
+	text-align: center;
+	color: var(--info);
+
+	transition: 0.5s;
+}
+
+.info-big {
+	font-size: 44px;
+	margin: -15px 0;
+	font-weight: bold;
+}
+
+.content {
+	margin-left: 30px;
+	margin-top: 25px;
+}
+
+.obiekty {
+	float: left;
+	background-color: var(--obiekty-bg-color);
+	width: fit-content;
+	padding: 1px 20px;
+	border-radius: 20px;
+	border: black 1px solid;
+
+	transition: 0.5s;
+}
+
+.obiekty h2 {
+	text-align: center;
+	color: rgb(162,0,17);
+}
+
+.obiekty a {
+	color: rgb(162,0,17);
+}
+
+.themeButton {
+	background-color: var(--bg-color);
+	color: var(--theme-button-color);
+	position: absolute;
+	bottom: 10px;
+	left: 10px;
+	border-radius: 5px;
+	padding: 5px;
+	cursor: pointer;
+	font-size: 25px;
+
+	transition: 0.5s;
+}
+
+.menu-button {
+	color: var(--bg-color);
+	background-color: var(--bg-color2);
+	padding: 5px;
+	font-size: 25px;
+	top: 5px;
+	left: 5px;
+	border-radius: 5px;
+	cursor: pointer;
+	position: fixed;
+	display: none;
+}
+
+@media only screen and (max-width: 700px) {
+	.menu-button {
+		display: block;
+	}
+
+	.left-panel {
+		position: fixed;
+		width: 100%;
+		left: -100%;
+
+		transform: 1s;
+	}
+
+	.left-panel.open {
+		left: 0;
+	}
+
+	.left-panel-button {
+		width: 100%;
+	}
+
+	.main {
+		margin-left: 0;
+	}
+}

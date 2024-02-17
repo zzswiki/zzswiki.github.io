@@ -1,11 +1,4 @@
-// zmienne
-var id_nastepnej_sekcji = 1;
-var id_nastepnej_zawartosci = 1;
-let lista_sekcji = {
-  'sekcje' : []
-};
-
-var zdjecie_obiektu = false;
+var zdjecie_obiektu = true;
 
 var is_safe = false;
 var is_euclid = false;
@@ -14,470 +7,440 @@ var is_setter = false;
 var is_metter = false;
 var is_etther = false;
 
+var next_section_ID = 0;
+var next_content_ID = 0;
+
+var content = [];
+
+var crator_version = "2.0";
+
 // maksymalnie 3 cyfry w ID 
-const numberInput = document.getElementById("id-input");
+const numberInput = document.getElementById("id");
 numberInput.addEventListener("input", () => {
   if (numberInput.value.length > 3) {
     numberInput.value = numberInput.value.slice(0, 3);
   }
 });
 
-// usunięcie sekcji
-function close_sekcja(sekcja_id) {
-  var sekcja = document.getElementById(`sekcja_${sekcja_id}`);
-  sekcja.remove()
+// przycisk zdjęcia obiektu
+$('#img-button').click(function () {
+	if (zdjecie_obiektu){
+		$(this).text("OFF");
+		
+	} else {
+		$(this).text("ON");
+	}
+	$('#img-des').slideToggle();
+	zdjecie_obiektu = !zdjecie_obiektu;
+	$(this).toggleClass('off');
+});
 
-  for (let i = 0; i < lista_sekcji.sekcje.length; i++){
-    if (lista_sekcji.sekcje[i]['id'] == sekcja_id){
-      lista_sekcji.sekcje.splice(i, 1);
-    };
-  };
+$('#safe-btn').click(function () { 
+	setClassActive(true, "safe");
+	setClassActive(false, "euclid");
+	setClassActive(false, "keter");
+});
+
+$('#euclid-btn').click(function () { 
+	setClassActive(false, "safe");
+	setClassActive(true, "euclid");
+	setClassActive(false, "keter");
+});
+
+$('#keter-btn').click(function () { 
+	setClassActive(false, "safe");
+	setClassActive(false, "euclid");
+	setClassActive(true, "keter");
+});
+
+$('#setter-btn').click(function () { 
+	setClassActive(true, "setter");
+	setClassActive(false, "metter");
+	setClassActive(false, "etther");
+});
+
+$('#metter-btn').click(function () { 
+	setClassActive(false, "setter");
+	setClassActive(true, "metter");
+});
+
+$('#etther-btn').click(function () { 
+	setClassActive(false, "setter");
+	setClassActive(true, "etther");
+});
+
+function setClassActive(active, name) {
+	is_class = "is_" + name;
+	window[is_class] = active;
+
+	if (active){
+		$('#' + name + '-btn').addClass('active');
+	} else {
+		$('#' + name + '-btn').removeClass('active');
+	}
 }
 
-// usunięcie zawartości
-function close_zawartosc(sekcja_id, zawartosc_id) {
-  var zawartosc = document.getElementById(`zawartosc_${zawartosc_id}`);
-  zawartosc.remove()
+// ---------------- SEKCJE ----------------
 
-  for (let i = 0; i < lista_sekcji.sekcje.length; i++){
-    if (lista_sekcji.sekcje[i]['id'] == sekcja_id){
-      let index = lista_sekcji.sekcje[i]['id_zawartosci'].indexOf(zawartosc_id);
-      lista_sekcji.sekcje[i]['id_zawartosci'].splice(index, 1);
-    };
-  };
+$('#addSection').click(function () { 
+	var section_type = $('#typ-sekcji').val();
+	
+	var tekst_section = `
+	<div class="section_panel" id="section_${next_section_ID}">
+		<button onclick="remove_section(${next_section_ID});" class="close_btn"><ion-icon name="trash-outline" class="remove_section_panel"></ion-icon></button>
+		<h3>Tekst</h3>
+		<div class="section_panel_content" id="section_panel_${next_section_ID}">
+		</div>
+		<button onclick="add_text(${next_section_ID});" class="add_text_btn">Dodaj tekst</button>
+	</div>
+	`;
+	
+	var sfa_section = `
+	<div class="section_panel" id="section_${next_section_ID}">
+		<button onclick="remove_section(${next_section_ID});" class="close_btn"><ion-icon name="trash-outline" class="remove_section_panel"></ion-icon></button>
+		<h3>SFA</h3>
+		<span>Osoba notująca</span>
+		<input type="text" id="sfa_${next_section_ID}">
+		<div class="section_panel_content" id="section_panel_${next_section_ID}">
+		</div>
+		<button onclick="add_text(${next_section_ID});" class="add_text_btn">Dodaj tekst</button>
+	</div>
+	`;
+
+	var przesluchanie_section = `
+	<div class="section_panel" id="section_${next_section_ID}">
+		<button onclick="remove_section(${next_section_ID});" class="close_btn"><ion-icon name="trash-outline" class="remove_section_panel"></ion-icon></button>
+		<h3>Przesłuchanie</h3>
+		<span>Przesłuchujący</span>
+		<br>
+		<input type="text" id="przesluchujacy_${next_section_ID}">
+		<br><br>
+		<span>Przesłuchiwany</span>
+		<br>
+		<input type="text" id="przesluchiwany_${next_section_ID}">
+		<div class="section_panel_content" id="section_panel_${next_section_ID}">
+		</div>
+		<button onclick="add_text(${next_section_ID});" class="add_text_btn">Dodaj tekst</button>
+	</div>
+	`;
+	
+	var badanie_section = `
+	<div class="section_panel" id="section_${next_section_ID}">
+		<button onclick="remove_section(${next_section_ID});" class="close_btn"><ion-icon name="trash-outline" class="remove_section_panel"></ion-icon></button>
+		<h3>Badanie</h3>
+		<span>Przeprowadzający badanie</span>
+		<br>
+		<input type="text" id="badanie_osoba_${next_section_ID}">
+		<br><br>
+		<span>Przedmioty w badaniu</span>
+		<br>
+		<input type="text" id="badanie_przedmioty_${next_section_ID}">
+		<div class="section_panel_content" id="section_panel_${next_section_ID}">
+		</div>
+		<button onclick="add_text(${next_section_ID});" class="add_text_btn">Dodaj tekst</button>
+	</div>
+	`;
+
+	if (section_type == "tekst"){
+		$('#content').append(tekst_section);
+	} else if (section_type == "sfa"){
+		$('#content').append(sfa_section);
+	} else if (section_type == "przesluchanie"){
+		$('#content').append(przesluchanie_section);
+	} else if (section_type == "badanie"){
+		$('#content').append(badanie_section);
+	}
+
+	var section_push = {
+		'id' : next_section_ID,
+		'type' : section_type,
+		'section_content' : []
+	};
+
+	content.push(section_push);
+
+	next_section_ID++;
+});
+
+function remove_section(ID) {
+	$(window["section_" + ID]).remove();
+
+	for (let index = 0; index < content.length; index++) {
+		const element = content[index];
+		if (element['id'] == ID) {
+			content.splice(index, 1);
+		}
+	}
 }
 
-// tworzenie nowej sekji
-function create_sekcja() {
-  var typ_sekcji_input = document.getElementById("typ-sekcji");
-  var typ_sekcji = typ_sekcji_input.value;
-
-  if(typ_sekcji == "tekst"){
-    var sekcja = document.createElement("div");
-    sekcja.classList.add("sekcja");
-    sekcja.id = `sekcja_${id_nastepnej_sekcji}`;
-    sekcja.innerHTML = `
-    <button onclick="close_sekcja(${id_nastepnej_sekcji})" class="close">X</button>
-    <h3>Tekst</h3>
-    <button onclick="create_zawartosc(${id_nastepnej_sekcji})" class="dodaj-tekst">Dodaj tekst</button>
-    <div id="zawartosc_sekcji_${id_nastepnej_sekcji}">
-    </div>`;
-  } else if (typ_sekcji == "sfa"){
-    var sekcja = document.createElement("div");
-    sekcja.classList.add("sekcja");
-    sekcja.id = `sekcja_${id_nastepnej_sekcji}`;
-    sekcja.innerHTML = `
-    <button onclick="close_sekcja(${id_nastepnej_sekcji})" class="close">X</button>
-    <h3>SFA</h3>
-    <label>Osoba notująca</label>
-    <input type="text" id="osoba_notujaca_${id_nastepnej_sekcji}">
-    <br>
-    <button onclick="create_zawartosc(${id_nastepnej_sekcji})" class="dodaj-tekst">Dodaj tekst</button>
-    <div id="zawartosc_sekcji_${id_nastepnej_sekcji}">
-    </div>`;
-  } else if (typ_sekcji == "przesluchanie"){
-    var sekcja = document.createElement("div");
-    sekcja.classList.add("sekcja");
-    sekcja.id = `sekcja_${id_nastepnej_sekcji}`;
-    sekcja.innerHTML = `
-    <button onclick="close_sekcja(${id_nastepnej_sekcji})" class="close">X</button>
-    <h3>Przesłuchanie</h3>
-    <label>Przesłuchujący</label>
-    <input type="text" id="przesluchujacy_${id_nastepnej_sekcji}">
-    <label>Przesłuchiwany</label>
-    <input type="text" id="przesluchiwany_${id_nastepnej_sekcji}">
-    <br>
-    <br>
-    <button onclick="create_zawartosc(${id_nastepnej_sekcji})" class="dodaj-tekst">Dodaj tekst</button>
-    <div id="zawartosc_sekcji_${id_nastepnej_sekcji}">
-    </div>`;
-  } else if (typ_sekcji == "badanie"){
-    var sekcja = document.createElement("div");
-    sekcja.classList.add("sekcja");
-    sekcja.id = `sekcja_${id_nastepnej_sekcji}`;
-    sekcja.innerHTML = `
-    <button onclick="close_sekcja(${id_nastepnej_sekcji})" class="close">X</button>
-    <h3>Badanie</h3>
-    <label>Przeprowadzający badanie</label>
-    <input type="text" id="przeprowadzajacy_badanie_${id_nastepnej_sekcji}">
-    <br>
-    <label>Przedmioty w badaniu</label>
-    <input type="text" id="przedmioty_w_badaniu_${id_nastepnej_sekcji}">
-    <br>
-    <button onclick="create_zawartosc(${id_nastepnej_sekcji})" class="dodaj-tekst">Dodaj tekst</button>
-    <div id="zawartosc_sekcji_${id_nastepnej_sekcji}">
-    </div>`;
-  }
-
-  lista_sekcji.sekcje.push({
-    'id' : id_nastepnej_sekcji,
-    'typ' : typ_sekcji,
-    'id_zawartosci' : []
-  });
-
-  id_nastepnej_sekcji += 1;
-  var content = document.getElementById("content")
-  content.appendChild(sekcja);
+function remove_content(ID, section_ID) {
+	for (let index = 0; index < content.length; index++) {
+		const element = content[index];
+		if (element['id'] == section_ID) {
+			const content_index = content[index]['section_content'].indexOf(ID);
+			element['section_content'].splice(content_index, 1);
+		}
+	}
+	
+	$(window["content_" + ID]).remove();
 }
 
-// tworzenie nowej zawartości
-function create_zawartosc(sekcja_id) {
-  var zawartosc = document.createElement("div");
-  zawartosc.classList.add("zawartosc");
-  zawartosc.id = `zawartosc_${id_nastepnej_zawartosci}`;
-  zawartosc.innerHTML = `
-    <button onclick="close_zawartosc(${sekcja_id}, ${id_nastepnej_zawartosci})" style="float: right; background-color: rgba(0, 0, 0, 0); border: none; cursor: pointer;">X</button>
-    <label>Nazwa</label>
-    <input class="nazwa" type="text" id="text-nazwa-${id_nastepnej_zawartosci}">
-    <a>Zawartość</a>
-    <br>
-    <textarea class="zawartosc-text" id="text-zawartosc-${id_nastepnej_zawartosci}"></textarea>
-  `;
+function add_text(ID) {
+	var tekst_content = `
+		<div class="content_panel" id="content_${next_content_ID}">
+			<button onclick="remove_content(${next_content_ID}, ${ID});" class="close_btn"><ion-icon name="trash-outline" class="remove_section_panel"></ion-icon></button>
+			<span>Nazwa: </span>
+			<input type="text" class="name_input" id="name_${next_content_ID}">
+			<p>Zawartość:</p>
+			<textarea name="" id="text_content_${next_content_ID}" rows="10"></textarea>
+		</div>
+	`;
 
-  for (let i = 0; i < lista_sekcji.sekcje.length; i++){
-    if (lista_sekcji.sekcje[i]['id'] == sekcja_id){
-      lista_sekcji.sekcje[i]['id_zawartosci'].push(id_nastepnej_zawartosci);
-    };
-  };
+	$(window["section_panel_" + ID]).append(tekst_content);
 
-  id_nastepnej_zawartosci += 1;
-  var sekcja = document.getElementById(`zawartosc_sekcji_${sekcja_id}`);
-  sekcja.appendChild(zawartosc)
+	for (let index = 0; index < content.length; index++) {
+		const element = content[index];
+		if (content[index]['id'] == ID) {
+			element['section_content'].push(next_content_ID);
+		}
+	}
+	next_content_ID++;
 }
 
-// zdjęcie obiektu
-function img_button() {
-  var img_button = document.getElementById("img-button");
-  var img_div = document.getElementById("img-div");
+// ---------------- GENEROWANIE KODU ----------------
 
-  if(zdjecie_obiektu == false){
-    zdjecie_obiektu = !zdjecie_obiektu;
-    img_button.value = "ON";
-    img_button.setAttribute("class", "img-button-on");
-    img_div.style.display = "block";
-  } else {
-    zdjecie_obiektu = !zdjecie_obiektu;
-    img_button.value = "OFF";
-    img_button.setAttribute("class", "img-button-off");
-    img_div.style.display = "none";
-  }
-}
+function format_output() {
+	var object_ID = $('#id').val().padStart(3, '0');
 
-// klasy
-function safe() {
-  is_safe = true;
-  is_euclid = false;
-  is_keter = false;
+	var class_list = "";
+	var class_list_names = "";
+	var object_photo = "";
+	var img_des = $('#img-des-text').val();
+	var main_content = "";
+	var sfa_num = 1;
+	var badanie_num = 1;
+	var przesluchanie_num = 1;
 
-  var safe = document.getElementById("safe-btn");
-  var euclid = document.getElementById("euclid-btn");
-  var keter = document.getElementById("keter-btn");
+	if (is_safe) {
+		class_list += `<img src="/media/class/safe.png">`;
+		class_list_names = 'Safe';
+	}
+	if (is_euclid) {
+		class_list += `<img src="/media/class/euclid.png">`;
+		class_list_names = 'Euclid';
+	}
+	if (is_keter) {
+		class_list += `<img src="/media/class/keter.png">`;
+		class_list_names = 'Keter';
+	}
+	if (is_setter) {
+		class_list += `<img src="/media/class/setter.png">`;
+		class_list_names += ', Setter';
+	}
+	if (is_metter) {
+		class_list += `<img src="/media/class/metter.png">`;
+		class_list_names += ', Metter';
+	}
+	if (is_etther) {
+		class_list += `<img src="/media/class/etther.png">`;
+		class_list_names += ', Etther';
+	}
 
-  safe.setAttribute("class", "active");
-  euclid.setAttribute("class", "deactivate");
-  keter.setAttribute("class", "deactivate");
-}
-function euclid() {
-  is_safe = false;
-  is_euclid = true;
-  is_keter = false;
+	if (zdjecie_obiektu) {
+		object_photo = `
+			<div class="img" style="float: right; margin: 20px;">
+				<img src="media/img1.png" style="width: 250px; height: auto;">
+				<p><strong>${img_des}</strong></p>
+			</div>`;
+	}
 
-  var safe = document.getElementById("safe-btn");
-  var euclid = document.getElementById("euclid-btn");
-  var keter = document.getElementById("keter-btn");
+	var autor_nick = $('#autor-nick').val();
+	var autor_wyswietlana = $('#autor-wyswietlana').val();
 
-  safe.setAttribute("class", "deactivate");
-  euclid.setAttribute("class", "active");
-  keter.setAttribute("class", "deactivate");
-}
-function keter() {
-  is_safe = false;
-  is_euclid = false;
-  is_keter = true;
+	for (let index = 0; index < content.length; index++) {
+		const element = content[index];
+		let text_content = "";
 
-  var safe = document.getElementById("safe-btn");
-  var euclid = document.getElementById("euclid-btn");
-  var keter = document.getElementById("keter-btn");
+		if (element['type'] == 'tekst') {
+			for (let index2 = 0; index2 < element['section_content'].length; index2++) {
+				const content_id_list = element['section_content'][index2];
+				const content_name = $(window["name_" + content_id_list]).val();
+				const content_content = $(window["text_content_" + content_id_list]).val();;
+	
+				text_content += `
+				<p><b>${content_name}</b>${content_content}</p>
+				`;
+			}
+	
+			main_content += `
+			<!-- START section -->
+				<div class="section">
+					${text_content}
+				</div>
+				<hr>
+			<!-- END section -->
+			`;
+		} else if (element['type'] == 'sfa'){
+			for (let index2 = 0; index2 < element['section_content'].length; index2++) {
+				const content_id_list = element['section_content'][index2];
+				const content_name = $(window["name_" + content_id_list]).val();
+				const content_content = $(window["text_content_" + content_id_list]).val();;
+				
+				text_content += `
+				<p><b>${content_name}</b>${content_content}</p>
+				`;
+			}
 
-  safe.setAttribute("class", "deactivate");
-  euclid.setAttribute("class", "deactivate");
-  keter.setAttribute("class", "active");
-}
-function setter() {
-  is_setter = true;
-  is_metter = false;
-  is_etther = false;
+			var sfa_num_t = sfa_num.toString().padStart(3, '0');
+			const sfa_noted = $(window["sfa_" + element['id']]).val();
 
-  var setter = document.getElementById("setter-btn");
-  var metter = document.getElementById("metter-btn");
-  var etther = document.getElementById("etther-btn");
+			main_content += `
+			<!-- START section -->
+				<div class="section">
+					<p><b>Osoba notująca:</b> ${sfa_noted}</p>
+					<p><b>sygnatura SFA:</b> ZZS-${object_ID}-SFA-${sfa_num_t}</p>
+					<blockquote>
+						<p><b>&lt;Początek SFA&gt;</b></p>
+						${text_content}
+						<p><b>&lt;Koniec SFA&gt;</b></p>
+					</blockquote>
+				</div>
+				<hr>
+			<!-- END section -->
+			`;
 
-  setter.setAttribute("class", "active");
-  metter.setAttribute("class", "deactivate");
-  etther.setAttribute("class", "deactivate");
-}
-function metter() {
-  is_setter = false;
-  is_metter = true;
+			sfa_num++;
 
-  var setter = document.getElementById("setter-btn");
-  var metter = document.getElementById("metter-btn");
+		} else if (element['type'] == 'badanie'){
+			for (let index2 = 0; index2 < element['section_content'].length; index2++) {
+				const content_id_list = element['section_content'][index2];
+				const content_name = $(window["name_" + content_id_list]).val();
+				const content_content = $(window["text_content_" + content_id_list]).val();;
+				
+				text_content += `
+				<p><b>${content_name}</b>${content_content}</p>
+				`;
+			}
 
-  setter.setAttribute("class", "deactivate");
-  metter.setAttribute("class", "active");
-}
-function etther() {
-  is_setter = false;
-  is_etther = true;
+			var badanie_num_t = badanie_num.toString().padStart(3, '0');
+			const badanie_osoba = $(window["badanie_osoba_" + element['id']]).val();
+			const badanie_przedmioty = $(window["badanie_przedmioty_" + element['id']]).val();
 
-  var setter = document.getElementById("setter-btn");
-  var etther = document.getElementById("etther-btn");
+			main_content += `
+			<!-- START section -->
+				<div class="section">
+					<p><b>Badanie przeprowadzone na ZZS-${object_ID}</b></p>
+					<p><b>Przeprowadzający badanie:</b> ${badanie_osoba}</p>
+					<p><b>Obiekt:</b> ${badanie_przedmioty}</p>
+					<p><b>Sygnatura badania:</b> ZZS-${object_ID}-LOG-B-${badanie_num_t}</p>
+					<blockquote>
+						${text_content}
+					</blockquote>
+				</div>
+				<hr>
+			<!-- END section -->
+			`;
 
-  setter.setAttribute("class", "deactivate");
-  etther.setAttribute("class", "active");
-}
+			badanie_num++;
 
-document.getElementById("safe-btn").addEventListener("click", safe);
-document.getElementById("euclid-btn").addEventListener("click", euclid);
-document.getElementById("keter-btn").addEventListener("click", keter);
-document.getElementById("setter-btn").addEventListener("click", setter);
-document.getElementById("metter-btn").addEventListener("click", metter);
-document.getElementById("etther-btn").addEventListener("click", etther);
+		} else if (element['type'] == 'przesluchanie'){
+			for (let index2 = 0; index2 < element['section_content'].length; index2++) {
+				const content_id_list = element['section_content'][index2];
+				const content_name = $(window["name_" + content_id_list]).val();
+				const content_content = $(window["text_content_" + content_id_list]).val();;
+				
+				text_content += `
+				<p><b>${content_name}</b>${content_content}</p>
+				`;
+			}
 
-function generuj() {
-  // zmienne
-  var output = document.getElementById("output");
-  var id_obiektu = document.getElementById("id-input").value;
-  var id = id_obiektu.toString().padStart(3, '0');
-  var autor_nick = document.getElementById("autor-nick").value;
-  var autor_wyswietlana = document.getElementById("autor-wyswietlana").value;
-  var klasy_text = "";
-  var klasy_img = "";
-  var obiekt_img = "";
-  var opis_zdjecia = document.getElementById("opis-zdjecia").value;
-  var sekcje_text = "";
-  var sygnatura_sfa = 1;
-  var sygnatura_przesluchania = 1;
-  var sygnatura_badania = 1;
+			var przesluchanie_num_t = przesluchanie_num.toString().padStart(3, '0');
+			const przesluchujacy = $(window["przesluchujacy_" + element['id']]).val();
+			const przesluchiwany = $(window["przesluchiwany_" + element['id']]).val();
 
-  // klasy
-  if (is_safe == true){
-    klasy_text = "Safe";
-    klasy_img = `<img src="/media/class/safe.png">`;
-  } else if (is_euclid == true){
-    klasy_text = "Euclid";
-    klasy_img = `<img src="/media/class/euclid.png">`;
-  } else if (is_keter == true){
-    klasy_text = "Keter";
-    klasy_img = `<img src="/media/class/keter.png">`;
-  };
+			main_content += `
+			<!-- START section -->
+				<div class="section">
+					<p><b>Audiolog z przesłuchania ZZS-${object_ID}:</b></p>
+					<p><b>Przesłuchujący:</b> ${przesluchujacy}</p>
+					<p><b>Przesłuchiwany:</b> ${przesluchiwany}</p>
+					<p><b>Sygnatura badania:</b> ZZS-${object_ID}-LOG-${przesluchanie_num_t}</p>
+					<blockquote>
+						<p><b>&lt;Początek nagrania&gt;</b></p>
+						${text_content}
+						<p><b>&lt;Koniec nagrania&gt;</b></p>
+					</blockquote>
+				</div>
+				<hr>
+			<!-- END section -->
+			`;
 
-  if (is_setter == true){
-    klasy_text += ", Setter";
-    klasy_img += `<img src="/media/class/setter.png">`;
-  };
-  if (is_metter == true){
-    klasy_text += ", Metter";
-    klasy_img += `<img src="/media/class/metter.png">`;
-  };
-  if (is_etther == true){
-    klasy_text += ", Etther";
-    klasy_img += `<img src="/media/class/etther.png">`;
-  };
+			przesluchanie_num++;
 
-  // zdjęcie obiektu
-  if (zdjecie_obiektu == true){
-    obiekt_img = `
-      <div class="img" style="float: right; margin: 20px;">
-        <img src="media/img1.png" style="width: 250px; height: auto;">
-        <p><strong>${opis_zdjecia}</strong></p>
-      </div>
-    `;
-  };
+		}
+	}
 
-  // sekcje
-  for (let i = 0; i < lista_sekcji.sekcje.length; i++){
-    sekcje_text += `
-    <div class="section">
-    `
-    if (lista_sekcji.sekcje[i]['typ'] == "tekst"){
-      for (let x = 0; x < lista_sekcji.sekcje[i]['id_zawartosci'].length; x++){
-        var id_zaw = lista_sekcji.sekcje[i]['id_zawartosci'][x];
-        var nazwa = document.getElementById(`text-nazwa-${id_zaw}`).value;
-        var zawartosc = document.getElementById(`text-zawartosc-${id_zaw}`).value;
-
-        sekcje_text += `
-        <p>
-          <strong>${nazwa}</strong>
-          ${zawartosc}
-          <br>
-        </p>
-        `
-      }
-    } else if (lista_sekcji.sekcje[i]['typ'] == "sfa"){
-      var sekcja_id = lista_sekcji.sekcje[i]['id'];
-      var osoba_notujaca = document.getElementById(`osoba_notujaca_${sekcja_id}`).value;
-
-      sekcje_text += `
-        <p>
-          <strong>Osoba notująca: </strong>
-          ${osoba_notujaca} <br>
-          <strong>sygnatura SFA: </strong>
-          ZZS-${id}-SFA-${sygnatura_sfa.toString().padStart(3, '0')}
-        </p>
-        <blockquote>
-          <p><strong>&lt;Początek SFA&gt;</strong></p>
-      `
-      sygnatura_sfa++;
-      for (let x = 0; x < lista_sekcji.sekcje[i]['id_zawartosci'].length; x++){
-        var id_zaw = lista_sekcji.sekcje[i]['id_zawartosci'][x];
-        var nazwa = document.getElementById(`text-nazwa-${id_zaw}`).value;
-        var zawartosc = document.getElementById(`text-zawartosc-${id_zaw}`).value;
-
-        sekcje_text += `
-        <p><b>${nazwa}</b> ${zawartosc}</p>
-        `
-      }
-      sekcje_text += `
-          <p><strong>&lt;Koniec nagrania&gt;</strong></p>
-        </blockquote>
-      `
-    } else if (lista_sekcji.sekcje[i]['typ'] == "przesluchanie"){
-      var sekcja_id = lista_sekcji.sekcje[i]['id'];
-      var przesluchujacy = document.getElementById(`przesluchujacy_${sekcja_id}`).value;
-      var przesluchiwany = document.getElementById(`przesluchiwany_${sekcja_id}`).value;
-
-      sekcje_text += `
-          <p>
-            <strong>Audiolog z przesłuchania ${przesluchiwany}:</strong><br>
-            <br>
-            <strong>Przesłuchujący: </strong>
-            ${przesluchujacy} <br>
-            <strong>Przesłuchiwany: </strong>
-            ${przesluchiwany} <br>
-            <strong>Sygnatura przesłuchania: </strong>
-            ZZS-${id}-LOG-${sygnatura_przesluchania.toString().padStart(3, '0')}
-          </p>
-        <blockquote>
-          <p><strong>&lt;Początek nagrania&gt;</strong></p>
-      `
-      sygnatura_przesluchania++;
-      for (let x = 0; x < lista_sekcji.sekcje[i]['id_zawartosci'].length; x++){
-        var id_zaw = lista_sekcji.sekcje[i]['id_zawartosci'][x];
-        var nazwa = document.getElementById(`text-nazwa-${id_zaw}`).value;
-        var zawartosc = document.getElementById(`text-zawartosc-${id_zaw}`).value;
-
-        sekcje_text += `
-        <p><b>${nazwa}:</b> ${zawartosc}</p>
-        `
-      }
-      sekcje_text += `
-          <p><strong>&lt;Koniec nagrania&gt;</strong></p>
-        </blockquote>
-      `
-    } else if (lista_sekcji.sekcje[i]['typ'] == "badanie"){
-      var sekcja_id = lista_sekcji.sekcje[i]['id'];
-      var przeprowadzajacy_badanie = document.getElementById(`przeprowadzajacy_badanie_${sekcja_id}`).value;
-      var przedmioty_w_badaniu = document.getElementById(`przedmioty_w_badaniu_${sekcja_id}`).value;
-
-      sekcje_text += `
-      <p>
-        <strong>Badanie przeprowadzone na ZZS-${id}:</strong><br>
-        <br>
-        <strong>Przeprowadzający badanie: </strong>
-        ${przeprowadzajacy_badanie} <br>
-        <strong>Obiekt: </strong>
-        ZZS-${id} <br>
-        <strong>Sygnatura badania: </strong>
-        ZZS-${id}-LOG-B-${sygnatura_badania} <br>
-        <strong>Przedmioty wykorzystane w badaniu: </strong>
-        ${przedmioty_w_badaniu}
-      </p>
-      <blockquote>
-      `
-
-      sygnatura_badania++;
-      for (let x = 0; x < lista_sekcji.sekcje[i]['id_zawartosci'].length; x++){
-        var id_zaw = lista_sekcji.sekcje[i]['id_zawartosci'][x];
-        var nazwa = document.getElementById(`text-nazwa-${id_zaw}`).value;
-        var zawartosc = document.getElementById(`text-zawartosc-${id_zaw}`).value;
-
-        sekcje_text += `
-        <p><strong>${nazwa}</strong></p>
-        <p>${zawartosc}</p>
-        `
-      }
-      sekcje_text += `
-      </blockquote>
-      `
-    }
-
-    sekcje_text += `
-    </div>
-    `
-    
-    if (i != lista_sekcji.sekcje.length - 1){
-      sekcje_text += `
-        <hr>
-      `
-    }
-  };
-
-  // output
-  output.value = `
+	var output = `
 <!DOCTYPE html>
 <html lang="pl">
-  <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" type="text/css" href="/style/main.css">
-    <link id="theme" rel="stylesheet" type="text/css" href="/style/dark/site-dark.css">
-    <link rel="icon" href="/media/zzs.png">
-    <title>ZZS-Wiki - ZZS-${id}</title>
-  </head>
-  <body>
-    <!-- START top bar -->
-    <div id="top">
-      <div class="topnav">
-        <a href="/">Home</a>
-      </div>
-    </div>
-    <!-- END top bar -->
+	<head>
+		<meta charset="UTF-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<link rel="stylesheet" type="text/css" href="/style/main.css">
+		<link id="theme" rel="stylesheet" type="text/css" href="/style/site.css">
+		<link rel="icon" href="/media/zzs.png">
+		<title>ZZS-Wiki - ZZS-${object_ID}</title>
 
-    <!-- main content -->
-    <div class="siteWeb">
-      <!-- START object img -->
-      ${obiekt_img}
-      <!-- END object img -->
-      <!-- START head -->
-      <h1>ZZS-${id}</h1>
-      <div class="class">
-        ${klasy_img}
-      </div>
-      <!-- END head -->
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+	</head>
+	<body>
+		<!-- START top bar -->
+		<div id="top">
+			<div class="topnav">
+				<a href="/">Home</a>
+			</div>
+		</div>
+		<!-- END top bar -->
 
-      <!-- START section 1 -->
-      <div class="section">
-        <!-- START descriptionn -->
-        <p>
-          <strong>Identyfikator podmiotu: </strong>
-          ZZS-${id} <br>
-          <br>
-          <strong>Klasa podmiotu: </strong>
-          ${klasy_text} <br>
-          <br>
-        <!-- END description -->
+		<!-- main content -->
+		<div class="siteWeb">
 
-      </div>
-      
-      ${sekcje_text}
+			<!-- START object img -->
+				${object_photo}
+			<!-- END object img -->
 
-      <p>By <a href="/profile/${autor_nick}.html">${autor_wyswietlana}</a></p>
-    </div>
-    <!-- END content -->
-    <script src="/js/theme/datk-theme-site.js"></script>
-  </body>
+			<!-- START head -->
+			<h1>ZZS-${object_ID}</h1>
+			<div class="class">
+				${class_list} 
+			</div>
+			<!-- END head -->
+
+			<br>
+			<span><strong>Identyfikator podmiotu:</strong> ZZS-${object_ID}</span>
+			<br><br>
+			<span><strong>Klasa podmiotu:</strong> ${class_list_names}</span>
+			<br><br>			
+			${main_content}
+			<p>By <a href="/profile/${autor_nick}">${autor_wyswietlana}</a></p>
+			<p class="creator-info">In creator ${crator_version}</p>
+		</div>
+		<!-- END content -->
+		<script src="/js/theme.js"></script>
+	</body>
 </html>
-  `
+	
+	`;
+
+	$('#output').val(output);
+	update_iframe(output);
+}
+
+function update_iframe(output) {
+  document.getElementById('view').contentWindow.location.reload(true);
+
+  setTimeout(function() {
+    document.getElementById('view').contentWindow.document.write(output);
+  }, 100);
 }

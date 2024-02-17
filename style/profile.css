@@ -1,6 +1,23 @@
+:root {
+	--bg-color: #ffffff;
+	--profile-box: rgb(228, 228, 228);
+	--text: #000000;
+}
+
+body {
+	background-color: var(--bg-color);
+	color: var(--text);
+}
+
+.dark-theme {
+	--bg-color: #282928;
+	--profile-box: #353333;
+	--text: #ffffff;
+}
+
 .profile_box{
 	margin: 20px;
-	background-color: rgb(228, 228, 228);
+	background-color: var(--profile-box);
 	padding: 20px;
 	border-radius: 20px;
 	min-height: 300px;
@@ -18,4 +35,13 @@
 
 .name {
 	font-size: larger;
+}
+
+.list {
+	width: 100%;
+	float: left;
+}
+
+.list a {
+	color: rgb(230, 9, 27);
 }
