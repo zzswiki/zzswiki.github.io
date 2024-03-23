@@ -1,6 +1,6 @@
 :root {
-	--bg-color: #ffffff;
-	--text-color: #000000;
+	--bg-color: #282928;
+	--text-color: #ffffff;
 }
 
 body {
@@ -8,9 +8,9 @@ body {
 	color: var(--text-color);
 }
 
-.dark-theme {
-	--bg-color: #282928;
-	--text-color: #ffffff;
+.light-theme {
+	--bg-color: #ffffff;
+	--text-color: #000000;
 }
 
 .class_desc {

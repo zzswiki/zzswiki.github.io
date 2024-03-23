@@ -1,19 +1,20 @@
-if (localStorage.getItem('darkTheme') == "true"){
-	$('body').addClass('dark-theme');
-	$('#themeButton').prop('name', 'moon-outline');
+if (localStorage.getItem('lightTheme') == "true"){
+	$('body').addClass('light-theme');
+	$('#themeButton').prop('name', 'sunny-outline');
 } else {
-	localStorage.setItem("darkTheme", "false");
+	localStorage.setItem("lightTheme", "false");
+	$('#themeButton').prop('name', 'moon-outline');
 }
 
 $('#themeButton').on('click', function () {
-	$('body').toggleClass('dark-theme');
+	$('body').toggleClass('light-theme');
 
-	if($('body').hasClass('dark-theme')){
-		$('#themeButton').prop('name', 'moon-outline');
-		localStorage.setItem("darkTheme", "true");
-	} else {
-		localStorage.setItem("darkTheme", "false");
+	if($('body').hasClass('light-theme')){
 		$('#themeButton').prop('name', 'sunny-outline');
+		localStorage.setItem("lightTheme", "true");
+	} else {
+		localStorage.setItem("lightTheme", "false");
+		$('#themeButton').prop('name', 'moon-outline');
 	};
 });
 
