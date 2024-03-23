@@ -1,35 +1,4 @@
 :root {
-	--true: rgb(7, 184, 7);
-	--false: rgb(192, 7, 7);
-
-	--text: #061210;
-	--reverse-text: rgb(238, 238, 238);
-
-	--shadow: rgba(0, 0, 0, 0.2);
-
-	--panel-bg: #e4e4e4;
-	--web-bg: #fff;
-	
-	--calss-bg: #ffffff;
-	--selected: #AD9DDE;
-	--hovered: #D187E4;
-
-	--button: #47C0B2;
-	--hovered-button: #4fd1c2;
-
-	--border: black;
-
-	--panel: rgb(211, 207, 207);
-
-	--input: rgb(245, 242, 242); 
-}
-
-body {
-	color: var(--text);
-	background-color: var(--web-bg);
-}
-
-.dark-theme {
 	--panel-bg: #181818;
 	--web-bg: #202020;
 
@@ -53,6 +22,37 @@ body {
 
 	--button: #3029b4;
 	--hovered-button: #3A31D8;
+}
+
+body {
+	color: var(--text);
+	background-color: var(--web-bg);
+}
+
+.light-theme {
+	--true: rgb(7, 184, 7);
+	--false: rgb(192, 7, 7);
+
+	--text: #061210;
+	--reverse-text: rgb(238, 238, 238);
+
+	--shadow: rgba(0, 0, 0, 0.2);
+
+	--panel-bg: #e4e4e4;
+	--web-bg: #fff;
+	
+	--calss-bg: #ffffff;
+	--selected: #AD9DDE;
+	--hovered: #D187E4;
+
+	--button: #47C0B2;
+	--hovered-button: #4fd1c2;
+
+	--border: black;
+
+	--panel: rgb(211, 207, 207);
+
+	--input: rgb(245, 242, 242); 
 }
 
 .panel {

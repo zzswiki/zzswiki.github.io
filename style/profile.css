@@ -1,7 +1,7 @@
 :root {
-	--bg-color: #ffffff;
-	--profile-box: rgb(228, 228, 228);
-	--text: #000000;
+	--bg-color: #282928;
+	--profile-box: #353333;
+	--text: #ffffff;
 }
 
 body {
@@ -9,10 +9,10 @@ body {
 	color: var(--text);
 }
 
-.dark-theme {
-	--bg-color: #282928;
-	--profile-box: #353333;
-	--text: #ffffff;
+.light-theme {
+	--bg-color: #ffffff;
+	--profile-box: rgb(228, 228, 228);
+	--text: #000000;
 }
 
 .profile_box{
