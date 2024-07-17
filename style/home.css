@@ -172,4 +172,8 @@ body {
 	.main {
 		margin-left: 0;
 	}
+	
+	.themeButton {
+		bottom: 80px;
+	}
 }
